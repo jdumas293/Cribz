@@ -3,14 +3,14 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Booking extends Model {
+  class Review extends Model {
     static associate(models) {
       // define association here
-      Booking.belongsTo(models.User, { foreignKey: 'userId' });
-      Booking.belongsTo(models.Spot, { foreignKey: 'spotId' });
+      Review.belongsTo(models.User, { foreignKey: 'userId' });
+      Review.belongsTo(models.Spot, { foreignKey: 'spotId' });
     }
   }
-  Booking.init({
+  Review.init({
     spotId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -19,23 +19,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    startDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-        isDate: true
-      }
+    review: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    endDate: {
-      type: DataTypes.DATE,
+    stars: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isDate: true
+        min: 0,
+        max: 5
       }
     }
   }, {
     sequelize,
-    modelName: 'Booking',
+    modelName: 'Review',
   });
-  return Booking;
+  return Review;
 };
