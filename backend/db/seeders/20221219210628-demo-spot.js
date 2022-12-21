@@ -19,7 +19,7 @@ module.exports = {
         lat: 42.3314,
         lng: 83.0458,
         name: 'One Manor',
-        description: 'This is a haunted manor, book at your own risk.',
+        description: 'Walking distance from Comerica Park.',
         price: 123
       },
       {

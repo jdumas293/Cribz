@@ -13,7 +13,7 @@ module.exports = {
       {
         spotId: 1,
         userId: 2,
-        review: 'I was haunted by a ghost!',
+        review: 'Was not able to get into the spot',
         stars: 1
       },
       {
@@ -39,6 +39,12 @@ module.exports = {
         userId: 3,
         review: 'Too expensive!',
         stars: 2
+      },
+      {
+        spotId: 1,
+        userId: 3,
+        review: 'Good place to stay.',
+        stars: 5
       }
     ])
   },
