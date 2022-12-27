@@ -12,6 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Review.init({
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
     spotId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -31,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         min: 0,
         max: 5
       }
-    }
+    },
   }, {
     sequelize,
     modelName: 'Review',
