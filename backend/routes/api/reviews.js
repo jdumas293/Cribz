@@ -4,7 +4,6 @@ const { Review, Spot, ReviewImage, User, SpotImage } = require('../../db/models'
 const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const e = require('express');
 
 const router = express.Router();
 
@@ -56,7 +55,7 @@ router.get('/current', requireAuth, async (req, res) => {
     Reviews.forEach(review => {
         review.Spot.SpotImages.forEach(image => {
             review.Spot.previewImage = image.url
-        })
+        });
 
         delete review.Spot.SpotImages;
     });
@@ -83,7 +82,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         res.json({
             message: "Review couldn't be found",
             statusCode: 404
-        })
+        });
     };
 
     const images = await ReviewImage.findAll({
@@ -98,19 +97,21 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         res.json({
             message: "Maximum number of images for this resource was reached",
             statusCode: 403
-        })
+        });
     };
 
-    // if current user created the review
+    // review must belong to current user
     if (review.userId === req.user.id) {
         await ReviewImage.create({
             reviewId: req.params.reviewId,
             url: url
         });
     } else {
+        res.status(403);
         res.json({
-            message: "Review must belong to the current user"
-        })
+            message: "Forbidden",
+            statusCode: 403
+        });
     };
 
     // query for new review image
@@ -135,21 +136,28 @@ router.put('/:reviewId', requireAuth, validateReview, async (req, res) => {
         }
     });
 
+    if (!reviewUpdate) {
+        res.status(404);
+        res.json({
+            message: "Review couldn't be found",
+            statusCode: 404
+        });
+    };
+
     // review must belong to current user
     if (reviewUpdate.userId === req.user.id) {
         reviewUpdate.update({
             review: review,
             stars: stars
-        })
+        });
+        res.json(reviewUpdate);
     } else {
-        res.status(404);
+        res.status(403);
         res.json({
-            message: "Review couldn't be found",
-            statusCode: 404
-        })
-    }
-
-    res.json(reviewUpdate);
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
 });
 
 
@@ -161,21 +169,28 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
         }
     });
 
-    // review must belong to current user
-    if (reviewDelete.userId === req.user.id) {
-        await reviewDelete.destroy();
-    } else {
+    if (!reviewDelete) {
         res.status(404);
         res.json({
             message: "Review couldn't be found",
             statusCode: 404
-        })
+        });
     };
 
-    res.json({
-        message: "Successfully deleted",
-        statusCode: 200
-    });
+    // review must belong to current user
+    if (reviewDelete.userId === req.user.id) {
+        await reviewDelete.destroy();
+        res.json({
+            message: "Successfully deleted",
+            statusCode: 200
+        });
+    } else {
+        res.status(403);
+        res.json({
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
 });
 
 

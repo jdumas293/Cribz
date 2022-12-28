@@ -11,11 +11,11 @@ const router = express.Router();
 const validateLogin = [
     check('credential')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide a valid email or username.'),
+        // .notEmpty()
+        .withMessage('Email or username is required'),
     check('password')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a password.'),
+        .withMessage('Password is required'),
     handleValidationErrors
 ];
 
@@ -25,13 +25,21 @@ router.post('/', validateLogin, async (req, res, next) => {
 
     const user = await User.login({ credential, password }); // call login static method from User model passing in cred and password
 
+    // if (!user) {
+    //     const err = new Error('Login failed');
+    //     err.status = 401;
+    //     err.title = 'Login failed';
+    //     err.errors = ['The provided credentials were invalid.'];
+    //     return next(err);
+    // }
+
     if (!user) {
-        const err = new Error('Login failed');
-        err.status = 401;
-        err.title = 'Login failed';
-        err.errors = ['The provided credentials were invalid.'];
-        return next(err);
-    }
+        res.status(401);
+        res.json({
+            message: "Invalid credentials",
+            statusCode: 401
+        });
+    };
 
     await setTokenCookie(res, user); // set token cookie
 

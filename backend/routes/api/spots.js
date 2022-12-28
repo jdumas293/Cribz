@@ -71,21 +71,31 @@ router.get('/', async (req, res) => {
     })
 
     Spots.forEach(spot => {
-
         let starCount = 0;
-        spot.Reviews.forEach(review => {
-            starCount += review.stars;
-            spot.avgRating = starCount / spot.Reviews.length;
-        })
+        if (spot.Reviews.length) {
+            spot.Reviews.forEach(review => {
+                starCount += review.stars;
+                spot.avgRating = starCount / spot.Reviews.length;
+            });
+        } else {
+            spot.avgRating = "no reviews";
+        };
 
-        spot.SpotImages.forEach(image => {
-            if (image.preview === true) {
-                spot.previewImage = image.url;
-            }
-        })
+        if (spot.SpotImages.length) {
+            spot.SpotImages.forEach(image => {
+                if (image.preview === true) {
+                    spot.previewImage = image.url;
+                } else {
+                    spot.previewImage = "no preview image";
+                }
+            });
+        } else {
+            spot.previewImage = "no preview image";
+        };
+
         delete spot.SpotImages;
         delete spot.Reviews;
-    })
+    });
 
     res.json({ Spots });
 });
@@ -114,22 +124,33 @@ router.get('/current', requireAuth, async (req, res) => {
     Spots.forEach(spot => {
 
         let starCount = 0;
-        spot.Reviews.forEach(review => {
-            starCount += review.stars;
-            spot.avgRating = starCount / spot.Reviews.length;
-        })
+        if (spot.Reviews.length) {
+            spot.Reviews.forEach(review => {
+                starCount += review.stars;
+                spot.avgRating = starCount / spot.Reviews.length;
+            });
+        } else {
+            spot.avgRating = "no reviews";
+        };
 
-        spot.SpotImages.forEach(image => {
-            if (image.preview === true) {
-                spot.previewImage = image.url;
-            }
-        })
+        if (spot.SpotImages.length) {
+            spot.SpotImages.forEach(image => {
+                if (image.preview === true) {
+                    spot.previewImage = image.url;
+                } else {
+                    spot.previewImage = "no preview image"
+                }
+            });
+        } else {
+            spot.previewImage = "no preview image";
+        };
+
         delete spot.SpotImages;
         delete spot.Reviews;
-    })
+    });
 
     res.json({ Spots });
-})
+});
 
 // Get Details of Spot by Id
 router.get('/:spotId', async (req, res) => {
@@ -168,10 +189,14 @@ router.get('/:spotId', async (req, res) => {
 
     // average star rating
     let starCount = 0;
-    spot.Reviews.forEach(review => {
-        starCount += review.stars;
-        details.avgStarRating = starCount / spot.Reviews.length;
-    })
+    if (spot.Reviews.length) {
+        spot.Reviews.forEach(review => {
+            starCount += review.stars;
+            details.avgStarRating = starCount / spot.Reviews.length;
+        });
+    } else {
+        details.avgStarRating = "no reviews";
+    };
 
     delete details.Reviews;
 
@@ -220,6 +245,14 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         }
     });
 
+    if (!spot) {
+        res.status(404);
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+
     // spot must belong to current user
     if (spot.ownerId === req.user.id) {
         await SpotImage.create({
@@ -228,12 +261,12 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             preview: preview
         });
     } else {
-        res.status(404);
+        res.status(403);
         res.json({
-            message: "Spot couldn't be found",
-            statusCode: 404
-        })
-    }
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
 
     // query for new spot image
     const newSpotImage = await SpotImage.findOne({
@@ -251,15 +284,23 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
-    const spotUpdate = await Spot.findOne({
+    const spot = await Spot.findOne({
         where: {
             id: req.params.spotId
         }
     });
 
+    if (!spot) {
+        res.status(404);
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        });
+    };
+
     // spot must belong to current user
-    if (spotUpdate.ownerId === req.user.id) {
-        spotUpdate.update({
+    if (spot.ownerId === req.user.id) {
+        spot.update({
             address: address,
             city: city,
             state: state,
@@ -271,6 +312,26 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
             price: price
         })
     } else {
+        res.status(403);
+        res.json({
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
+
+    res.json(spot);
+});
+
+
+// Delete a spot
+router.delete('/:spotId', requireAuth, async (req, res) => {
+    const spot = await Spot.findOne({
+        where: {
+            id: req.params.spotId
+        }
+    });
+
+    if (!spot) {
         res.status(404);
         res.json({
             message: "Spot couldn't be found",
@@ -278,33 +339,20 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
         });
     };
 
-    res.json(spotUpdate);
-});
-
-
-// Delete a spot
-router.delete('/:spotId', requireAuth, async (req, res) => {
-    const spotDelete = await Spot.findOne({
-        where: {
-            id: req.params.spotId
-        }
-    });
-
     // spot must belong to current user
-    if (spotDelete.ownerId === req.user.id) {
-        await spotDelete.destroy();
-    } else {
-        res.status(404);
+    if (spot.ownerId === req.user.id) {
+        await spot.destroy();
         res.json({
-            message: "Spot couldn't be found",
-            statusCode: 404
-        })
-    }
-
-    res.json({
-        message: "Successfully deleted",
-        statusCode: 200
-    });
+            message: "Successfully deleted",
+            statusCode: 200
+        });
+    } else {
+        res.status(403);
+        res.json({
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
 });
 
 
@@ -406,7 +454,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
         res.json({
             message: "Spot couldn't be found",
             statusCode: 404
-        })
+        });
     };
 
     const notOwnerBooking = await Booking.findAll({
@@ -430,14 +478,14 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     if (req.user.id === spot.ownerId) {
         res.json({
             Bookings: ownerBooking
-        })
+        });
     // if current user is not owner
     } else {
         res.json({
             Bookings: notOwnerBooking
-        })
-    }
-})
+        });
+    };
+});
 
 
 // Create a Booking for a Spot by Id
@@ -478,8 +526,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
                 message: "Validation error",
                 statusCode: 400,
                 errors: { endDate: "endDate cannot be on or before startDate" }
-            })
-        }
+            });
+        };
 
         if (newStart >= currentStart && newEnd <= currentEnd) {
             res.status(403);
@@ -525,15 +573,16 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             userId: req.user.id,
             startDate: startDate,
             endDate: endDate
-        })
-
+        });
         res.json(userBooking);
     } else {
+        res.status(403);
         res.json({
-            message: "You can't book a spot that you own"
-        })
-    }
-})
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
+});
 
 
 module.exports = router;
