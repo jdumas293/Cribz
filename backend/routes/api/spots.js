@@ -244,15 +244,7 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
         name: name,
         description: description,
         price: price
-    })
-
-    // if (validateSpot) {
-    //     res.json({
-    //         message: "Validation Error",
-    //         statusCode: 400,
-    //         errors: validateSpot.errors
-    //     })
-    // }
+    });
 
     res.json(spot);
 });
