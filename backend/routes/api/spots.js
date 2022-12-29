@@ -54,6 +54,26 @@ const validateReview = [
 
 // Get all spots
 router.get('/', async (req, res) => {
+    let { page, size } = req.query;
+
+    page = parseInt(page);
+    size = parseInt(size);
+
+    if (Number.isNaN(page)) page = 1; // default 1
+    if (Number.isNaN(size)) size = 20; // default 20
+
+    if (page > 10) page = 10; // max 10
+    if (size > 20) size = 20; // max 20
+
+    if (page < 1 || size < 1) { // min 1 - validation error if less than 1
+        res.status(400);
+        res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: { page: "Page must be greater than or equal to 1", size: "Size must be greater than or equal to 1" }
+        });
+    };
+
     const spots = await Spot.findAll({
         include: [
             {
@@ -63,6 +83,8 @@ router.get('/', async (req, res) => {
                 model: SpotImage,
             },
         ],
+        limit: size,
+        offset: (page - 1) * size
     });
 
     let Spots = [];
@@ -97,7 +119,11 @@ router.get('/', async (req, res) => {
         delete spot.Reviews;
     });
 
-    res.json({ Spots });
+    res.json({
+        Spots,
+        page,
+        size
+    });
 });
 
 // Get Spots of Current User
