@@ -31,12 +31,14 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='signup-form' onSubmit={handleSubmit}>
+      <h1 className='signup-header'>Welcome to Flairbnb!</h1>  
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
-        Email
+      <label className='email-label'>
+        Email:
+        <br />
         <input
           type="text"
           value={email}
@@ -44,8 +46,9 @@ function SignupFormPage() {
           required
         />
       </label>
-      <label>
-        Username
+      <label className='username-label'>
+        Username:
+        <br />
         <input
           type="text"
           value={username}
@@ -53,8 +56,9 @@ function SignupFormPage() {
           required
         />
       </label>
-      <label>
-        First Name
+      <label className='fn-label'>
+        First Name:
+        <br />
         <input
           type="text"
           value={firstName}
@@ -62,8 +66,9 @@ function SignupFormPage() {
           required
         />
       </label>
-      <label>
-        Last Name
+      <label className='ln-label'>
+        Last Name:
+        <br />
         <input
           type="text"
           value={lastName}
@@ -71,8 +76,9 @@ function SignupFormPage() {
           required
         />
       </label>
-      <label>
-        Password
+      <label className='password-label'>
+        Password:
+        <br />
         <input
           type="password"
           value={password}
@@ -80,8 +86,9 @@ function SignupFormPage() {
           required
         />
       </label>
-      <label>
-        Confirm Password
+      <label className='confirmpw-label'>
+        Confirm Password:
+        <br />
         <input
           type="password"
           value={confirmPassword}
@@ -89,7 +96,9 @@ function SignupFormPage() {
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <br />
+      <button className='signup-btn' type="submit">Sign Up</button>
+      <br />
     </form>
   );
 }

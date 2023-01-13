@@ -1,0 +1,47 @@
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-radius: 50px;
+    width: 400px;
+    padding: 10px;
+}
+
+.signup-header {
+    align-self: center;
+}
+
+.signup-btn {
+    align-self: center;
+    width: 75px;
+}
+
+.email-label {
+    padding: 10px;
+    align-self: center;
+}
+
+.username-label {
+    padding: 10px;
+    align-self: center;
+}
+
+.fn-label {
+    padding: 10px;
+    align-self: center;
+}
+
+.ln-label {
+    padding: 10px;
+    align-self: center;
+}
+
+.password-label {
+    padding: 10px;
+    align-self: center;
+}
+
+.confirmpw-label {
+    padding: 10px;
+    align-self: center;
+}
