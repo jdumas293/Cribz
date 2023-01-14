@@ -1,14 +1,9 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    border: solid;
     border-radius: 50px;
-    width: 400px;
+    width: 300px;
     padding: 10px;
-}
-
-.login-header {
-    align-self: center;
 }
 
 .cred-label {
