@@ -5,41 +5,12 @@
     padding: 10px;
 }
 
-.signup-header {
-    align-self: center;
-}
-
-.email-label {
+.signup-form label {
     padding: 10px;
     align-self: center;
 }
 
-.username-label {
-    padding: 10px;
-    align-self: center;
-}
-
-.fn-label {
-    padding: 10px;
-    align-self: center;
-}
-
-.ln-label {
-    padding: 10px;
-    align-self: center;
-}
-
-.password-label {
-    padding: 10px;
-    align-self: center;
-}
-
-.confirmpw-label {
-    padding: 10px;
-    align-self: center;
-}
-
-.signup-btn {
+.signup-form button {
     align-self: center;
     width: 75px;
     color: white;

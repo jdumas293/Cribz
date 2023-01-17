@@ -6,17 +6,16 @@
     padding: 10px;
 }
 
-.cred-label {
+.login-form h1 {
+    align-self: center;
+}
+
+.login-form label {
     padding: 10px;
     align-self: center;
 }
 
-.password-label {
-    padding: 10px;
-    align-self: center;
-}
-
-.login-btn {
+.login-form button {
     align-self: center;
     width: 75px;
     color: white;

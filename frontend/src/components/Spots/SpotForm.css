@@ -6,3 +6,19 @@
     border: 1px solid black;
     border-radius: 25px;
 }
+
+.spot-form label {
+    align-self: center;
+}
+
+.spot-form h1 {
+    align-self: center;
+}
+
+.spot-form button {
+    align-self: center;
+    width: 75px;
+    color: white;
+    background-color: rgb(230, 30, 77);
+    padding: 5px
+}

@@ -2,9 +2,10 @@ import { useState } from "react";
 import { thunkCreateSpot } from "../../store/spots";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useModal } from "../../context/Modal";
 import './SpotForm.css';
 
-export default function SpotForm () {
+export default function SpotFormModal () {
     const dispatch = useDispatch();
     const history = useHistory();
     const [address, setAddress] = useState('');
@@ -16,9 +17,12 @@ export default function SpotForm () {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
+    const [errors, setErrors] = useState([]);
+    const { closeModal } = useModal();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setErrors([]);
 
         const newSpot = {
             address,
@@ -31,7 +35,14 @@ export default function SpotForm () {
             description,
             price
         }
-        dispatch(thunkCreateSpot(newSpot));
+        dispatch(thunkCreateSpot(newSpot))
+            .then(closeModal)
+            .catch(
+                async(res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                }
+            )
         history.push('/');
     }
 
@@ -41,7 +52,10 @@ export default function SpotForm () {
                 className="spot-form"
                 onSubmit={handleSubmit}
                 >
-                <h1>List a Spot:</h1>
+                <h1>List a Spot</h1>
+                <ul>
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
                 <label>
                     Address:
                     <br />
@@ -117,7 +131,7 @@ export default function SpotForm () {
                 <label>
                     Description:
                     <br />
-                    <textArea
+                    <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
