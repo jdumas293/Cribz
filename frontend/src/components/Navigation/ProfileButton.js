@@ -70,6 +70,12 @@ function ProfileButton({ user }) {
                                 modalComponent={<SignupFormModal />}
                             />
                         </li>
+                        <li>
+                            <OpenModalButton
+                                buttonText="Demo"
+                                onButtonClick={() => dispatch(sessionActions.login({credential: 'Demo-lition', password: 'password'}))}
+                            />
+                        </li>
                     </>
                 )}
             </ul>

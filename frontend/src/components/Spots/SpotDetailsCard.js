@@ -4,6 +4,8 @@ import UpdateSpotModal from './UpdateSpotModal';
 import './SpotDetails.css'
 
 export default function SpotDetailsCard ({ spot }) {
+
+    console.log(spot)
     return (
         <>
             <div className='spot-details-container'>
@@ -13,7 +15,7 @@ export default function SpotDetailsCard ({ spot }) {
                 </div>
                 <div className='image-container'>
                     <div id='main-image'>
-                        Main Image Here
+                        <img src={spot.SpotImages[0].url} alt={spot.name}/>
                     </div>
                     <div id='other-images'>
                         Other Images
