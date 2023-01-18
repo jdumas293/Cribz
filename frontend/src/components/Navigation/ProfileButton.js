@@ -72,7 +72,7 @@ function ProfileButton({ user }) {
                         </li>
                         <li>
                             <OpenModalButton
-                                buttonText="Demo"
+                                buttonText="Demo User"
                                 onButtonClick={() => dispatch(sessionActions.login({credential: 'Demo-lition', password: 'password'}))}
                             />
                         </li>

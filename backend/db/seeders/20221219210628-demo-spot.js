@@ -18,9 +18,9 @@ module.exports = {
         country: 'United States',
         lat: 42.3314,
         lng: 83.0458,
-        name: 'One Manor',
+        name: 'One House',
         description: 'Walking distance from Comerica Park.',
-        price: 123
+        price: 1000
       },
       {
         ownerId: 2,
@@ -30,9 +30,9 @@ module.exports = {
         country: 'United States',
         lat: 25.7617,
         lng: 80.1918,
-        name: 'Two Manor',
+        name: 'Two House',
         description: 'Beach front property, amazing views.',
-        price: 456
+        price: 1500
       },
       {
         ownerId: 3,
@@ -42,9 +42,9 @@ module.exports = {
         country: 'United States',
         lat: 41.8781,
         lng: 87.6298,
-        name: 'Three Manor',
+        name: 'Three House',
         description: 'Located downtown, short walk from tourist destinations.',
-        price: 789
+        price: 1200
       },
       {
         ownerId: 1,
@@ -54,9 +54,9 @@ module.exports = {
         country: 'United States',
         lat: 29.7604,
         lng: 95.3698,
-        name: 'Four Manor',
+        name: 'Four House',
         description: 'Located downtown, many restaurants within walking distance.',
-        price: 234
+        price: 700
       },
       {
         ownerId: 2,
@@ -66,10 +66,58 @@ module.exports = {
         country: 'United States',
         lat: 40.7128,
         lng: 74.0060,
-        name: 'Five Manor',
+        name: 'Five House',
         description: 'Penthouse in Chelsea, amazing views, good neighborhood.',
-        price: 1000
-      }
+        price: 1400
+      },
+      {
+        ownerId: 3,
+        address: '666 Six Lane',
+        city: 'Seattle',
+        state: 'Washington',
+        country: 'United States',
+        lat: 40.7128,
+        lng: 74.0060,
+        name: 'Six House',
+        description: 'Located on lake.',
+        price: 550
+      },
+      {
+        ownerId: 1,
+        address: '777 Seven Lane',
+        city: 'Las Vegas',
+        state: 'Nevada',
+        country: 'United States',
+        lat: 40.7128,
+        lng: 74.0060,
+        name: 'Seven House',
+        description: 'Come gamble.',
+        price: 600
+      },
+      {
+        ownerId: 2,
+        address: '888 Eight Lane',
+        city: 'Naples',
+        state: 'Florida',
+        country: 'United States',
+        lat: 40.7128,
+        lng: 74.0060,
+        name: 'Eight House',
+        description: 'Come enjoy the sunshine.',
+        price: 850
+      },
+      {
+        ownerId: 3,
+        address: '999 Nine Lane',
+        city: 'Wolfeboro',
+        state: 'New Hampshire',
+        country: 'United States',
+        lat: 40.7128,
+        lng: 74.0060,
+        name: 'Nine House',
+        description: 'Located on Lake Winnipesaukee',
+        price: 500
+      },
     ])
   },
 
@@ -77,7 +125,7 @@ module.exports = {
     options.tableName = "Spots";
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      address: { [Op.in]: ['111 One Lane', '222 Two Lane', '333 Three Lane', '444 Four Lane', '555 Five Lane'] }
+      address: { [Op.in]: ['111 One Lane', '222 Two Lane', '333 Three Lane', '444 Four Lane', '555 Five Lane', '666 Six Lane', '777 Seven Lane', '888 Eight Lane', '999 Nine Lane'] }
     }, {});
   }
 };

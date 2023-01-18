@@ -1,9 +1,16 @@
+import { useHistory } from "react-router-dom"
 import "./SpotCard.css"
 
 export default function SpotCard ({ spot }) {
+    const history = useHistory();
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        history.push(`/spots/${spot.id}`);
+    }
 
     return (
-        <div className='container'>
+        <div className='container' onClick={handleClick}>
             <div className='image-container'>
                 <img id='image' src={spot.previewImage} alt={spot.name} />
             </div>

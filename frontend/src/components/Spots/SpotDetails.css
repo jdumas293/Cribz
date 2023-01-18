@@ -1,27 +1,50 @@
 #spot-details {
+    display: flex;
+    flex-direction: column;
     margin-left: 200px;
     margin-right: 200px;
+    /* border: 1px solid black */
 }
 
-.image-container {
+#spot-details h1 {
+    margin-bottom: 0px;
+    /* border: 1px solid black; */
+}
+
+#spot-details h5 {
+    margin-bottom: 0px;
+    /* border: 1px solid black; */
+}
+
+.update-delete-container {
     display: flex;
     flex-direction: row;
+    padding: 5px;
+    align-self: flex-end;
+    /* border: 1px solid black; */
 }
 
-#main-image {
-    margin-left: 200px;
-    /* margin-right: 200px; */
+.spot-detail-image-container {
+    margin-left: 190px;
+    margin-right: 200px;
+    height: 375px;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid black */
+}
+
+#main-image-container img {
+    width: 550px;
+    height: 350px;
+    border-radius: 20px;
+    /* border: 1px solid black; */
 }
 
 #other-images {
     margin-left: 100px;
-    /* margin-right: 200px; */
 }
 
-.delete-spot-btn {
+.reviews-container {
     margin-left: 200px;
-}
-
-.update-spot-btn {
-    margin-left: 200px;
+    margin-right: 200px;
 }

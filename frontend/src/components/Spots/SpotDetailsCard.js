@@ -5,36 +5,34 @@ import './SpotDetails.css'
 
 export default function SpotDetailsCard ({ spot }) {
 
-    console.log(spot)
     return (
         <>
             <div className='spot-details-container'>
                 <div id='spot-details'>
                     <h1>{spot.name}</h1>
-                    <h5>★{spot.avgStarRating} ... {spot.numReviews} reviews ... {spot.city}, {spot.state}, {spot.country}</h5>
+                    <h5>★{spot.avgStarRating} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}</h5>
+                    <div className='update-delete-container'>
+                        <OpenModalButton
+                            buttonText="Delete Spot"
+                            modalComponent={<DeleteSpotModal spotId={spot.id} />}
+                        />
+                            <OpenModalButton
+                                buttonText="Edit Spot"
+                                modalComponent={<UpdateSpotModal spotId={spot.id} />}
+                            />
+                    </div>
                 </div>
-                <div className='image-container'>
-                    <div id='main-image'>
+                <div className='spot-detail-image-container'>
+                    <div id='main-image-container'>
                         <img src={spot.SpotImages[0].url} alt={spot.name}/>
                     </div>
                     <div id='other-images'>
                         Other Images
                     </div>
                 </div>
-                <br />
-                <div className='delete-spot-btn'>
-                    <OpenModalButton
-                        buttonText="Delete Spot"
-                        modalComponent={<DeleteSpotModal spotId={spot.id} />}
-                    />
-                </div>
-                <br />
-                <div className='update-spot-btn'>
-                    <OpenModalButton
-                        buttonText="Edit Spot"
-                        modalComponent={<UpdateSpotModal spotId={spot.id} />}
-                    />
-                </div>
+            </div>
+            <div className='reviews-container'>
+                <h1>Reviews</h1>
             </div>
         </>
 

@@ -34,6 +34,26 @@ module.exports = {
         spotId: 5,
         url: 'https://a0.muscache.com/im/pictures/miso/Hosting-50939368/original/72a50d17-bd3c-4fe9-93e4-3ac2a7bead28.jpeg?im_w=1200',
         preview: true
+      },
+      {
+        spotId: 6,
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-737675916900385663/original/8512ae88-faec-4428-b0cc-84a13dd429b6.jpeg?im_w=1200',
+        preview: true
+      },
+      {
+        spotId: 7,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-600762922625870822/original/d0701b75-5a46-499e-9673-3582ca65223f.jpeg?im_w=1200',
+        preview: true
+      },
+      {
+        spotId: 8,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-29104113/original/8cf50701-f437-4bac-8fef-5a1ee1b62dbb.jpeg?im_w=1200',
+        preview: true
+      },
+      {
+        spotId: 9,
+        url: 'https://a0.muscache.com/im/pictures/d83f04a2-b8e8-4ea4-960a-cd2cea91e70e.jpg?im_w=1200',
+        preview: true
       }
     ])
   },
@@ -42,7 +62,7 @@ module.exports = {
     options.tableName = 'SpotImages';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      url: { [Op.in]: ['spot1.png', 'spot2.png', 'spot3.png', 'spot4.png', 'spot5.png'] }
+      spotId: { [Op.in]: ['1', '2', '3', '4', '5', '6', '7', '8', '9'] }
     }, {});
   }
 };
