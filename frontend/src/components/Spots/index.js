@@ -16,9 +16,8 @@ const SpotsIndex = () => {
     }, [dispatch]);
 
     return (
-        <div className="spotDisplay-main-div">
-            {/* <h1>All Spots</h1> */}
-            <div className="spotList-main-div">
+        <div className="spot-display">
+            <div className="spotCard-list">
                 {spots.map(spot => <SpotCard spot={spot} key={spot.id} />)}
             </div>
         </div>

@@ -10,13 +10,13 @@
     justify-content: space-evenly;
 }
 
-.spotDisplay-main-div {
+.spot-display {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.spotList-main-div {
+.spotCard-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

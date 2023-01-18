@@ -10,23 +10,34 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-      </li>
+    <nav className='nav-bar'>
+      <NavLink exact to="/">Home</NavLink>
+      <OpenModalButton
+        buttonText="List a Spot"
+        // onButtonClick={closeMenu}
+        modalComponent={<SpotFormModal />}
+      />
       {isLoaded && (
-        <li>
-          <ProfileButton user={sessionUser} />
-        </li>
+        <ProfileButton user={sessionUser} />
       )}
-      <li>
-          <OpenModalButton
-            buttonText="List a Spot"
-            // onButtonClick={closeMenu}
-            modalComponent={<SpotFormModal />}
-          />
-      </li>
-    </ul>
+    </nav>
+    // <ul>
+    //   <li>
+    //     <NavLink exact to="/">Home</NavLink>
+    //   </li>
+    //   {isLoaded && (
+    //     <li>
+    //       <ProfileButton user={sessionUser} />
+    //     </li>
+    //   )}
+    //   <li>
+    //       <OpenModalButton
+    //         buttonText="List a Spot"
+    //         // onButtonClick={closeMenu}
+    //         modalComponent={<SpotFormModal />}
+    //       />
+    //   </li>
+    // </ul>
   );
 }
 
