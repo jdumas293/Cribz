@@ -1,3 +1,5 @@
+import OpenModalButton from '../OpenModalButton';
+import DeleteSpotModal from './DeleteSpotModal';
 import './SpotDetails.css'
 
 export default function SpotDetailsCard ({ spot }) {
@@ -16,6 +18,13 @@ export default function SpotDetailsCard ({ spot }) {
                     <div id='other-images'>
                         Other Images
                     </div>
+                </div>
+                <br />
+                <div className='delete-update'>
+                    <OpenModalButton
+                        buttonText="Delete Spot"
+                        modalComponent={<DeleteSpotModal spotId={spot.id} />}
+                    />
                 </div>
             </div>
         </>

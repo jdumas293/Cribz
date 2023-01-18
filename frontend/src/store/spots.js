@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const GET_SPOTS = 'spots/loadSpots';
 const GET_DETAILS = 'spots/loadSpotDetails';
 const CREATE_SPOT = 'spots/createSpot';
+const DELETE_SPOT = 'spots/deleteSpot';
 
 // ACTION CREATORS
 export const getSpots = (spots) => {
@@ -16,13 +17,20 @@ export const getSpotDetails = (spot) => {
     return {
         type: GET_DETAILS,
         payload: spot
-    }
-}
+    };
+};
 
 export const createSpot = (spot) => {
     return {
         type: CREATE_SPOT,
         payload: spot
+    };
+};
+
+export const deleteSpot = (spotId) => {
+    return {
+        type: DELETE_SPOT,
+        payload: spotId
     };
 };
 
@@ -32,7 +40,6 @@ export const thunkGetSpots = () => async (dispatch) => {
 
     if (response.ok) {
         const spots = await response.json();
-        console.log('spots', spots);
         dispatch(getSpots(spots));
         return spots;
     };
@@ -64,6 +71,18 @@ export const thunkCreateSpot = (spot) => async (dispatch) => {
     }
 };
 
+export const thunkDeleteSpot = (spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(deleteSpot(spot.id));
+        return spot;
+    }
+};
+
 // REDUCER
 const initialState = {};
 
@@ -74,7 +93,6 @@ const spotsReducer = (state = initialState, action) => {
             action.payload.Spots.forEach(spot => {
                 newState[spot.id] = spot;
             });
-            // console.log(newState);
             return newState;
         }
         case GET_DETAILS: {
@@ -85,6 +103,11 @@ const spotsReducer = (state = initialState, action) => {
         case CREATE_SPOT: {
             const newState = { ...state };
             newState[action.payload.id] = action.payload;
+            return newState;
+        }
+        case DELETE_SPOT: {
+            const newState = { ...state };
+            delete newState[action.payload];
             return newState;
         }
         default:
