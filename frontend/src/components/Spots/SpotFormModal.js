@@ -12,8 +12,6 @@ export default function SpotFormModal () {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
-    const [lat, setLat] = useState();
-    const [lng, setLng] = useState();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
@@ -29,8 +27,8 @@ export default function SpotFormModal () {
             city,
             state,
             country,
-            lat,
-            lng,
+            lat: 40.7128,
+            lng: 74.0060,
             name,
             description,
             price
@@ -94,28 +92,6 @@ export default function SpotFormModal () {
                         name='country'
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Latitude:
-                    <br />
-                    <input
-                        type='number'
-                        step='any'
-                        name='lat'
-                        value={lat}
-                        onChange={(e) => setLat(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Longitude:
-                    <br />
-                    <input
-                        type='number'
-                        step='any'
-                        name='lng'
-                        value={lng}
-                        onChange={(e) => setLng(e.target.value)}
                     />
                 </label>
                 <label>

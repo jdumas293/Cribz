@@ -1,9 +1,9 @@
 import OpenModalButton from '../OpenModalButton';
 import DeleteSpotModal from './DeleteSpotModal';
+import UpdateSpotModal from './UpdateSpotModal';
 import './SpotDetails.css'
 
 export default function SpotDetailsCard ({ spot }) {
-
     return (
         <>
             <div className='spot-details-container'>
@@ -20,10 +20,17 @@ export default function SpotDetailsCard ({ spot }) {
                     </div>
                 </div>
                 <br />
-                <div className='delete-update'>
+                <div className='delete-spot-btn'>
                     <OpenModalButton
                         buttonText="Delete Spot"
                         modalComponent={<DeleteSpotModal spotId={spot.id} />}
+                    />
+                </div>
+                <br />
+                <div className='update-spot-btn'>
+                    <OpenModalButton
+                        buttonText="Edit Spot"
+                        modalComponent={<UpdateSpotModal spotId={spot.id} />}
                     />
                 </div>
             </div>

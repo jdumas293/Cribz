@@ -1,19 +1,9 @@
-.spotCard-container {
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
 .spot-display {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
+    /* border: 1px solid black; */
 }
 
 .spotCard-list {
@@ -21,4 +11,42 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    /* border: 1px solid black */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+}
+
+.image-container img {
+    width: 300px;
+    height: 210px;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    object-fit: cover
+    /* border: 1px solid black; */
+}
+
+.details-container {
+    width: 300px;
+    margin: 5px;
+}
+
+.details-container h5 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+#other-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px solid black */
 }

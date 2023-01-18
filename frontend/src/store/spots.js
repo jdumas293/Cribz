@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const GET_SPOTS = 'spots/loadSpots';
 const GET_DETAILS = 'spots/loadSpotDetails';
 const CREATE_SPOT = 'spots/createSpot';
+const UPDATE_SPOT = 'spots/updateSpot';
 const DELETE_SPOT = 'spots/deleteSpot';
 
 // ACTION CREATORS
@@ -23,6 +24,13 @@ export const getSpotDetails = (spot) => {
 export const createSpot = (spot) => {
     return {
         type: CREATE_SPOT,
+        payload: spot
+    };
+};
+
+export const updateSpot = (spot) => {
+    return {
+        type: UPDATE_SPOT,
         payload: spot
     };
 };
@@ -62,12 +70,28 @@ export const thunkCreateSpot = (spot) => async (dispatch) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(spot)
-    });
+    })
 
     if (response.ok) {
         const newSpot = await response.json();
         dispatch(createSpot(newSpot));
         return newSpot;
+    }
+};
+
+export const thunkUpdateSpot = (spot) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spot.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(spot)
+    })
+
+    if (response.ok) {
+        const updatedSpot = await response.json();
+        dispatch(updateSpot(updatedSpot));
+        return updatedSpot;
     }
 };
 
@@ -101,6 +125,11 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         case CREATE_SPOT: {
+            const newState = { ...state };
+            newState[action.payload.id] = action.payload;
+            return newState;
+        }
+        case UPDATE_SPOT: {
             const newState = { ...state };
             newState[action.payload.id] = action.payload;
             return newState;
