@@ -7,8 +7,7 @@ import "./SpotCard.css"
 
 const SpotsIndex = () => {
     const dispatch = useDispatch();
-    const spotsObj = useSelector((state) => state.spots);
-    const spots = Object.values(spotsObj);
+    const spots = Object.values(useSelector((state) => state.spots));
     // console.log('spots', spots);
 
     useEffect(() => {

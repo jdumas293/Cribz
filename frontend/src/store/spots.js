@@ -48,7 +48,7 @@ export const thunkGetSpots = () => async (dispatch) => {
 
     if (response.ok) {
         const spots = await response.json();
-        dispatch(getSpots(spots));
+        dispatch(getSpots(spots.Spots));
         return spots;
     };
 };
@@ -58,6 +58,7 @@ export const thunkGetSpotDetails = (spotId) => async (dispatch) => {
 
     if (response.ok) {
         const spot = await response.json();
+        // console.log(spot);
         dispatch(getSpotDetails(spot));
         return spot;
     }
@@ -108,21 +109,21 @@ export const thunkDeleteSpot = (spotId) => async (dispatch) => {
 };
 
 // REDUCER
-const initialState = {};
+const initialState = { allSpots: {}, singleSpot: {} };
 
 const spotsReducer = (state = initialState, action) => {
+    let newState;
     switch (action.type) {
         case GET_SPOTS: {
-            const newState = { ...state };
-            action.payload.Spots.forEach(spot => {
-                newState[spot.id] = spot;
+            newState = { ...state, allSpots: {...state.allSpots}, singleSpot: {...state.singleSpot} };
+            action.payload.forEach(spot => {
+                newState.allSpots[spot.id] = spot;
             });
-            return newState;
+            return newState.allSpots;
         }
         case GET_DETAILS: {
-            const newState = { ...state };
-            newState.singleSpot = { ...action.payload };
-            return newState;
+            newState = { ...state, allSpots: {...state.allSpots}, singleSpot: {...state.singleSpot, ...action.payload} };
+            return newState.singleSpot;
         }
         case CREATE_SPOT: {
             const newState = { ...state };
