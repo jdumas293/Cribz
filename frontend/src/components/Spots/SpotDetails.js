@@ -11,7 +11,7 @@ export default function SpotDetails () {
     const dispatch = useDispatch();
     const { spotId } = useParams();
 
-    const spot = useSelector(state => state.spots);
+    const spot = useSelector(state => state.spots.singleSpot);
 
     useEffect(() => {
         dispatch(thunkGetSpotDetails(spotId));
@@ -30,13 +30,13 @@ export default function SpotDetails () {
                         />
                         <OpenModalButton
                             buttonText="Edit Spot"
-                            modalComponent={<UpdateSpotModal spotId={spot.id} />}
+                            modalComponent={<UpdateSpotModal spot={spot} />}
                         />
                     </div>
                 </div>
                 <div className='spot-detail-image-container'>
                     <div id='main-image-container'>
-                        {/* <img src={spot.SpotImages.url} alt={spot.name}/> */}
+                        <img src={spot.SpotImages && spot.SpotImages[0].url} alt={spot.name}/>
                     </div>
                     <div id='other-images'>
                         {/* <img src={} */}

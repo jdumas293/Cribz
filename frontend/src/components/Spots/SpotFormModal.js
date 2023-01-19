@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { thunkCreateSpot } from "../../store/spots";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import './SpotForm.css';
@@ -15,8 +15,11 @@ export default function SpotFormModal () {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
+    const [previewImage, setPreviewImage] = useState('');
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
+
+    const currentUser = useSelector(state => state.session.user);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -32,8 +35,10 @@ export default function SpotFormModal () {
             name,
             description,
             price
-        }
-        dispatch(thunkCreateSpot(newSpot))
+        };
+        
+        dispatch(thunkCreateSpot(newSpot, previewImage, currentUser))
+            .then((spot) => history.push(`/spots/${spot.id}`))
             .then(closeModal)
             .catch(
                 async(res) => {
@@ -41,7 +46,6 @@ export default function SpotFormModal () {
                     if (data && data.errors) setErrors(data.errors);
                 }
             )
-        history.push('/');
     }
 
     return (
@@ -120,6 +124,16 @@ export default function SpotFormModal () {
                         name='price'
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Preview Image:
+                    <br />
+                    <input
+                        type='text'
+                        name='previewImage'
+                        value={previewImage}
+                        onChange={(e) => setPreviewImage(e.target.value)}
                     />
                 </label>
                 <br />
