@@ -2,13 +2,17 @@
     display: none;
 }
 
-/* .nav-container {
-    margin-left: 5px;
-    margin-right: 5px;
+.profile-dropdown {
+    position: absolute;
+}
+
+.nav-container {
     display: flex;
     flex-direction: row;
+    margin-left: 100px;
+    margin-right: 100px;
     height: 50px;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .home-btn {
@@ -16,7 +20,6 @@
     flex-direction: row;
     justify-content: left;
     width: 50%;
-    border: 1px solid black;
 }
 
 .other-nav {
@@ -24,10 +27,8 @@
     flex-direction: row;
     justify-content: right;
     width: 50%;
-    border: 1px solid black;
 }
 
 .list-spot-btn {
     margin-right: 10px;
-    border: 1px solid black;
-} */
+}

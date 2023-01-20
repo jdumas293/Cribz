@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { thunkCreateReview } from "../../store/reviews";
@@ -13,6 +13,8 @@ export default function CreateReviewModal ({ spotId }) {
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
+    const user = useSelector(state => state.session.user);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
@@ -22,7 +24,7 @@ export default function CreateReviewModal ({ spotId }) {
             stars
         }
 
-        dispatch(thunkCreateReview(newReview, spotId))
+        dispatch(thunkCreateReview(newReview, spotId, user))
             .then(closeModal)
             .catch(
                 async(res) => {

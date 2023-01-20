@@ -4,17 +4,16 @@ import { useModal } from "../../context/Modal";
 import { thunkDeleteReview } from "../../store/reviews";
 import './DeleteReview.css';
 
-export default function DeleteReviewModal ({ reviewId }) {
+export default function DeleteReviewModal ({ reviewId, spotId }) {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const { closeModal } = useModal();
 
     const handleDelete = async (e) => {
         e.preventDefault();
 
-        dispatch(thunkDeleteReview(reviewId));
+        await dispatch(thunkDeleteReview(reviewId));
         closeModal();
-        history.push('/');
     };
 
     return (

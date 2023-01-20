@@ -37,7 +37,7 @@ export const thunkGetReviews = (spotId) => async (dispatch) => {
     };
 };
 
-export const thunkCreateReview = (review, spotId) => async (dispatch) => {
+export const thunkCreateReview = (review, spotId, user) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'POST',
         headers: {
@@ -48,6 +48,8 @@ export const thunkCreateReview = (review, spotId) => async (dispatch) => {
 
     if (response.ok) {
         const review = await response.json();
+        review.User = user;
+        review.ReviewImages = [];
         dispatch(createReview(review));
         return review;
     };
@@ -59,33 +61,32 @@ export const thunkDeleteReview = (reviewId) => async (dispatch) => {
     });
 
     if (response.ok) {
-        const review = await response.json();
-        dispatch(deleteReview(review.id));
-        return review;
+        dispatch(deleteReview(reviewId));
     };
 };
 
 // REDUCER
-const initialState = { allReviews: {}, singleReview: {} };
+const initialState = { allReviews: {} };
 
 const reviewsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case GET_REVIEWS: {
-            newState = { ...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview} };
+            newState = { allReviews: {} };
             action.payload.forEach(review => {
                 newState.allReviews[review.id] = review;
             });
             return newState;
         }
         case CREATE_REVIEW: {
-            newState = { ...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview} };
-            newState.singleReview = { ...state.singleReview, ...action.payload };
+            newState = { ...state, allReviews: {...state.allReviews} };
+            newState.allReviews[action.payload.id] = action.payload;
+            console.log('newState', newState);
             return newState;
         }
         case DELETE_REVIEW: {
-            newState = { ...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview} };
-            delete newState.allSpots[action.payload];
+            newState = { ...state, allReviews: {...state.allReviews} };
+            delete newState.allReviews[action.payload];
             return newState;
         }
         default:

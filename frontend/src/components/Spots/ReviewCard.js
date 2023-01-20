@@ -1,7 +1,8 @@
 import DeleteReviewModal from "./DeleteReviewModal";
 import OpenModalButton from "../OpenModalButton";
 
-export default function ReviewCard ({ review }) {
+export default function ReviewCard ({ review, spotId }) {
+    
     return (
         <>
             <div className='review-container'>
@@ -9,8 +10,8 @@ export default function ReviewCard ({ review }) {
                     <h5>{review.User.firstName} {review.User.lastName}:</h5>
                     <p>{review.review}</p>
                     <OpenModalButton
-                        buttonText='Delete Review'
-                        modalComponent={<DeleteReviewModal reviewId={review.id}/>}
+                        buttonText='Delete'
+                        modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId} />}
                     />
                 </div>
             </div>

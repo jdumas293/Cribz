@@ -17,7 +17,7 @@ export default function SpotCard ({ spot }) {
             <div className='details-container'>
                 <div id='other-details'>
                     <h5>{spot.city}, {spot.state}</h5>
-                    <h5>★{spot.avgRating}</h5>
+                    <h5>★{Number(spot.avgRating).toFixed(2)}</h5>
                 </div>
                 <div id='price-details'>
                     <h5>${spot.price} night</h5>

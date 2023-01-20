@@ -32,7 +32,7 @@ export default function SpotDetails () {
             <div className='spot-details-container'>
                 <div id='spot-details'>
                     <h1>{spot.name}</h1>
-                    <h5>★{spot.avgStarRating} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}</h5>
+                    <h5>★{Number(spot.avgStarRating).toFixed(2)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}</h5>
                     <div className='update-delete-container'>
                         <OpenModalButton
                             buttonText="Delete Spot"
@@ -57,13 +57,12 @@ export default function SpotDetails () {
                 </div>
                 <div id='spot-description-container'>
                     <h4>Description:</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Vestibulum lorem sed risus ultricies. A lacus vestibulum sed arcu non. Faucibus et molestie ac feugiat sed lectus. Ut ornare lectus sit amet est placerat in egestas erat. Interdum velit laoreet id donec ultrices tincidunt arcu non.</p>
+                    <p>{spot.description}</p>
                 </div>
             </div>
-            <br />
             <hr id='spot-details-line-break'/>
             <div className='review-display'>
-                <h3>★{spot.avgStarRating} · {spot.numReviews} reviews</h3>
+                <h3>★{Number(spot.avgStarRating).toFixed(2)} · {spot.numReviews} reviews</h3>
                 <div className='create-delete-review-container'>
                     <OpenModalButton
                         buttonText="Create Review"
@@ -71,7 +70,7 @@ export default function SpotDetails () {
                     />
                 </div>
                 <div className='reviewCard-list'>
-                    {reviews.map(review => <ReviewCard review={review} key={review.id}/>)}
+                    {reviews.map(review => <ReviewCard review={review} spotId={spotId} key={review.id}/>)}
                 </div>
                 <br />
                 <br />
