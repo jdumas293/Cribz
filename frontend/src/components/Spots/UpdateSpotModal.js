@@ -20,7 +20,7 @@ export default function UpdateSpotModal ({ spot }) {
 
     // console.log('price', price)
 
-    const handleUpdate = (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
         setErrors([]);
 

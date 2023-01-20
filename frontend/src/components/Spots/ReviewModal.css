@@ -1,0 +1,24 @@
+.review-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.review-form label {
+    align-self: center;
+}
+
+.review-form h1 {
+    align-self: center;
+}
+
+.review-form button {
+    align-self: center;
+    width: 75px;
+    color: white;
+    background-color: rgb(230, 30, 77);
+    padding: 5px
+}

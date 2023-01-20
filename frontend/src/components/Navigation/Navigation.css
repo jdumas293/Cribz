@@ -1,3 +1,33 @@
 .hidden {
     display: none;
 }
+
+/* .nav-container {
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.home-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 50%;
+    border: 1px solid black;
+}
+
+.other-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    width: 50%;
+    border: 1px solid black;
+}
+
+.list-spot-btn {
+    margin-right: 10px;
+    border: 1px solid black;
+} */

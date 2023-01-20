@@ -1,29 +1,29 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { thunkDeleteSpot } from "../../store/spots";
-import './DeleteSpot.css'
+import { thunkDeleteReview } from "../../store/reviews";
+import './DeleteReview.css';
 
-export default function DeleteSpotModal ({ spotId }) {
+export default function DeleteReviewModal ({ reviewId }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
-    
+
     const handleDelete = async (e) => {
         e.preventDefault();
 
-        dispatch(thunkDeleteSpot(spotId));
+        dispatch(thunkDeleteReview(reviewId));
         closeModal();
         history.push('/');
-    }
+    };
 
     return (
-        <div className='delete-spot-container'>
-            <h3>Are you sure you want to delete this spot?</h3>
-            <div id='delete-spot-btns'>
-                <button id='delete-spot-btn' onClick={handleDelete}>Delete</button>
+        <div className='delete-review-container'>
+            <h3>Are you sure you want to delete this review?</h3>
+            <div id='delete-review-btns'>
+                <button id='delete-review-btn' onClick={handleDelete}>Delete</button>
                 <button onClick={closeModal}>Cancel</button>
             </div>
         </div>
-    )
-}
+    );
+};

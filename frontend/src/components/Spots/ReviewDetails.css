@@ -1,0 +1,22 @@
+.review-display {
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+    margin-right: 200px;
+    /* border: 1px solid black; */
+}
+
+.reviewCard-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    /* border: 1px solid black; */
+}
+
+#review-details h5 {
+    /* border: 1px solid black */
+    text-decoration: underline;
+    margin-bottom: 0px;
+    margin-top: 30px;
+}
+

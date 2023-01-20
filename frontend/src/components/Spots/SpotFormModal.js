@@ -53,8 +53,8 @@ export default function SpotFormModal () {
             <form
                 className="spot-form"
                 onSubmit={handleSubmit}
-                >
-                <h1>List a Spot</h1>
+            >
+                <h1>List Spot</h1>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
