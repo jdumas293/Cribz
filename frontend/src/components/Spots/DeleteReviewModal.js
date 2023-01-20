@@ -1,12 +1,10 @@
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { thunkDeleteReview } from "../../store/reviews";
 import './DeleteReview.css';
 
 export default function DeleteReviewModal ({ reviewId, spotId }) {
     const dispatch = useDispatch();
-    // const history = useHistory();
     const { closeModal } = useModal();
 
     const handleDelete = async (e) => {

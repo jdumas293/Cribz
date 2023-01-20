@@ -13,6 +13,7 @@
     margin-right: 100px;
     height: 50px;
     border-bottom: 1px solid black;
+    /* position: fixed; */
 }
 
 .home-btn {
@@ -31,4 +32,11 @@
 
 .list-spot-btn {
     margin-right: 10px;
+}
+
+#logo-img {
+    width: 75px;
+    height: 20px;
+    padding: 5px;
+    margin-top: 5px;
 }

@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import SpotFormModal from '../Spots/SpotFormModal';
 import OpenModalButton from '../OpenModalButton';
 import './Navigation.css';
+import logo from '../../assets/logo-no-background.png';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -12,7 +13,7 @@ function Navigation({ isLoaded }){
   return (
     <div className='nav-container'>
         <div className='home-btn'>
-          <NavLink exact to="/">Home</NavLink>
+          <NavLink exact to="/"><img id='logo-img' src={logo} alt='Cribz' /></NavLink>
         </div>
         <div className='other-nav'>
           <div className='list-spot-btn'>
