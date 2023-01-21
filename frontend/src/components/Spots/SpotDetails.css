@@ -160,3 +160,51 @@
 #delete-spot-btn-container {
     margin-right: 10px;
 }
+
+#delete-spot-btn-container button {
+    width: 90px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid rgb(230, 30, 77);
+    color: rgb(230, 30, 77);
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 13px;
+}
+
+#delete-spot-btn-container button:hover {
+    background-color: rgb(230, 30, 77);
+    color: white;
+    cursor: pointer;
+}
+
+#edit-spot-btn-container button {
+    width: 90px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid rgb(230, 30, 77);
+    color: rgb(230, 30, 77);
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 13px;
+}
+
+#edit-spot-btn-container button:hover {
+    background-color: rgb(230, 30, 77);
+    color: white;
+    cursor: pointer;
+}
+
+.create-delete-review-container button {
+    width: 100px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid rgb(230, 30, 77);
+    color: rgb(230, 30, 77);
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 13px;
+}
+
+.create-delete-review-container button:hover {
+    background-color: rgb(230, 30, 77);
+    color: white;
+    cursor: pointer;
+}

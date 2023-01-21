@@ -5,6 +5,7 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 25px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .review-form label {
@@ -17,8 +18,15 @@
 
 .review-form button {
     align-self: center;
-    width: 75px;
+    width: 150px;
+    color: rgba(230, 30, 7, 0.9);
+    border-color: rgba(230, 30, 77, 0.9);
+    background-color: white;
+    padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.review-form button:hover {
+    background-color: rgba(230, 30, 77, 0.9);
     color: white;
-    background-color: rgb(230, 30, 77);
-    padding: 5px
 }

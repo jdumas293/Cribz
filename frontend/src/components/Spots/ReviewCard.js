@@ -1,5 +1,6 @@
 import DeleteReviewModal from "./DeleteReviewModal";
 import OpenModalButton from "../OpenModalButton";
+import './ReviewDetails.css';
 
 export default function ReviewCard ({ review, spotId }) {
     

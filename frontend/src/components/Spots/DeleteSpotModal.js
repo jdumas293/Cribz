@@ -22,7 +22,7 @@ export default function DeleteSpotModal ({ spotId }) {
             <h3>Are you sure you want to delete this spot?</h3>
             <div id='delete-spot-btns'>
                 <button id='delete-spot-btn' onClick={handleDelete}>Delete</button>
-                <button onClick={closeModal}>Cancel</button>
+                <button id='cancel-delete-spot-btn' onClick={closeModal}>Cancel</button>
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ import * as sessionActions from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import './Navigation.css';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -51,31 +52,33 @@ function ProfileButton({ user }) {
                         <li>{user.firstName} {user.lastName}</li>
                         <li>{user.email}</li>
                         <li>
-                            <button onClick={logout}>Log Out</button>
+                            <button id='logout-current-user-btn' onClick={logout}>Log Out</button>
                         </li>
                     </>
                 ) : (
                     <>
-                        <li>
-                            <OpenModalButton
-                                buttonText="Log In"
-                                onButtonClick={closeMenu}
-                                modalComponent={<LoginFormModal />}
-                            />
-                        </li>
-                        <li>
-                            <OpenModalButton
-                                buttonText="Sign Up"
-                                onButtonClick={closeMenu}
-                                modalComponent={<SignupFormModal />}
-                            />
-                        </li>
-                        <li>
-                            <OpenModalButton
-                                buttonText="Demo User"
-                                onButtonClick={() => dispatch(sessionActions.login({credential: 'Demo-lition', password: 'password'}))}
-                            />
-                        </li>
+                        <div className='profile-btn-dropdown-options'>
+                            <li>
+                                <OpenModalButton
+                                    buttonText="Log In"
+                                    onButtonClick={closeMenu}
+                                    modalComponent={<LoginFormModal />}
+                                />
+                            </li>
+                            <li>
+                                <OpenModalButton
+                                    buttonText="Sign Up"
+                                    onButtonClick={closeMenu}
+                                    modalComponent={<SignupFormModal />}
+                                />
+                            </li>
+                            <li>
+                                <OpenModalButton
+                                    buttonText="Demo User"
+                                    onButtonClick={() => dispatch(sessionActions.login({credential: 'Demo-lition', password: 'password'}))}
+                                />
+                            </li>
+                        </div>
                     </>
                 )}
             </ul>

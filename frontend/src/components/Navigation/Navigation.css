@@ -11,6 +11,7 @@
     text-align: center;
     padding: 10px;
     background-color: rgba(0,0,0,0.7);
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .nav-container {
@@ -40,15 +41,71 @@
 .list-spot-btn {
     margin-right: 10px;
     margin-top: 10px;
+    margin-top: 5px;
+}
+
+.list-spot-btn button {
+    border: none;
+    width: 100px;
+    height: 35px;
+    background-color: white;
+    border: 2px solid black;
+    color: rgb(230, 30, 77);
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16 px;
+}
+
+.list-spot-btn button:hover {
+    background-color: rgba(230, 30, 77, 0.9);
+    color: white;
+    cursor: pointer;
 }
 
 .profile-btn {
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.profile-btn button {
+    border-radius: 10px;
+    height: 35px;
+    width: 45px;
+    background-color: white;
+}
+
+.profile-btn button:hover {
+    cursor: pointer;
+}
+
+.profile-btn-dropdown-options li button {
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    margin: 5px;
+}
+
+.profile-btn-dropdown-options li button:hover {
+    background-color: rgba(230, 30, 77, 0.9);
+    color: white;
+    cursor: pointer;
+}
+
+#logout-current-user-btn {
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    margin: 5px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#logout-current-user-btn:hover {
+    background-color: rgba(230, 30, 77, 0.9);
+    color: white;
+    cursor: pointer;
 }
 
 #logo-img {
-    width: 75px;
-    height: 20px;
+    width: 100px;
+    height: 25px;
     padding: 5px;
     margin-top: 5px;
 }

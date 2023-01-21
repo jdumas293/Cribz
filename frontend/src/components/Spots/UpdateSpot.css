@@ -5,6 +5,7 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 25px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .update-form label {
@@ -17,8 +18,16 @@
 
 .update-form button {
     align-self: center;
-    width: 75px;
+    width: 150px;
+    color: rgb(230, 30, 77);
+    border-color: rgb(230, 30, 77);
+    background-color: white;
+    padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.update-form button:hover {
     color: white;
-    background-color: rgb(230, 30, 77);
-    padding: 5px
+    background-color: rgba(230, 30, 77, 0.9);
+    cursor: pointer;
 }

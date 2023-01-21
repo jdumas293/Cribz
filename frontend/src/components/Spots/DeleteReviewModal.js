@@ -24,7 +24,7 @@ export default function DeleteReviewModal ({ reviewId, spotId }) {
             <h3>Are you sure you want to delete this review?</h3>
             <div id='delete-review-btns'>
                 <button id='delete-review-btn' onClick={handleDelete}>Delete</button>
-                <button onClick={closeModal}>Cancel</button>
+                <button id='cancel-delete-btn' onClick={closeModal}>Cancel</button>
             </div>
         </div>
     );

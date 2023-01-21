@@ -3,6 +3,11 @@
     flex-direction: column;
     width: 300px;
     padding: 10px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.signup-form h1 {
+    align-self: center;
 }
 
 .signup-form label {
@@ -12,8 +17,16 @@
 
 .signup-form button {
     align-self: center;
-    width: 75px;
-    color: white;
-    background-color: rgb(230, 30, 77);
+    width: 150px;
+    color: rgb(230, 30, 77);
+    border-color: rgb(230, 30, 77);
+    background-color: white;
     padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.signup-form button:hover {
+    color: white;
+    background-color: rgba(230, 30, 77, 0.9);
+    cursor: pointer;
 }

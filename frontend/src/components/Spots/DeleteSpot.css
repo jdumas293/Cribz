@@ -1,6 +1,7 @@
 .delete-spot-container {
     width: 400px;
     height: 100px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .delete-spot-container h3 {
@@ -14,7 +15,30 @@
 }
 
 #delete-spot-btn {
+    align-self: center;
+    width: 70px;
+    color: rgba(230, 30, 77, 0.9);
+    border-color: rgba(230, 30, 77, 0.9);
+    background-color: white;
+    margin-right: 20px;
+    padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#delete-spot-btn:hover {
+    background-color: rgba(230, 30, 77, 0.9);
     color: white;
-    background-color: rgb(230, 30, 77);
-    margin-right: 5px;
+    cursor: pointer;
+}
+
+#cancel-delete-spot-btn {
+    align-self: center;
+    width: 70px;
+    padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: white;
+}
+
+#cancel-delete-spot-btn:hover {
+    cursor: pointer;
 }
