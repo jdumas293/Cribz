@@ -8,7 +8,6 @@ import "./SpotCard.css"
 const SpotsIndex = () => {
     const dispatch = useDispatch();
     const spots = Object.values(useSelector((state) => state.spots.allSpots));
-    // console.log('spots', spots);
 
     useEffect(() => {
         dispatch(thunkGetSpots());

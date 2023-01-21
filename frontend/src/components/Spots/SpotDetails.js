@@ -7,9 +7,10 @@ import OpenModalButton from '../OpenModalButton';
 import DeleteSpotModal from './DeleteSpotModal';
 import UpdateSpotModal from './UpdateSpotModal';
 import ReviewCard from './ReviewCard';
+import CreateReviewModal from './CreateReviewModal';
 import './SpotDetails.css';
 import './ReviewDetails.css';
-import CreateReviewModal from './CreateReviewModal';
+import logoImg from '../../assets/cribz-black.png';
 
 export default function SpotDetails () {
     const dispatch = useDispatch();
@@ -17,7 +18,6 @@ export default function SpotDetails () {
 
     const spot = useSelector(state => state.spots.singleSpot);
     const reviews = Object.values(useSelector(state => state.reviews.allReviews));
-    // console.log('reviews', reviews);
 
     useEffect(() => {
         dispatch(thunkGetSpotDetails(spotId));
@@ -48,15 +48,28 @@ export default function SpotDetails () {
                     <div id='main-image-container'>
                         <img src={spot.SpotImages && spot.SpotImages[0].url} alt={spot.name}/>
                     </div>
-                    {/* <div id='other-images'> */}
-                        {/* <img src={} */}
-                    {/* </div> */}
+                    <div id='other-images-half-1'>
+                        <div id='other-img-1'>
+                            <img src={logoImg} alt='Cribz' />
+                        </div>
+                        <div id='other-img-2'>
+                            <img src={logoImg} alt='Cribz' />
+                        </div>
+                    </div>
+                    <div id='other-images-half-2'>
+                        <div id='other-img-3'>
+                            <img src={logoImg} alt='Cribz' />
+                        </div>
+                        <div id='other-img-4'>
+                            <img src={logoImg} alt='Cribz' />
+                        </div>
+                    </div>
                 </div>
                 <div id='spot-owner-details'>
                     <h3>Hosted by...</h3>
                 </div>
+                <hr id='description-line-break' />
                 <div id='spot-description-container'>
-                    <h4>Description:</h4>
                     <p>{spot.description}</p>
                 </div>
             </div>
