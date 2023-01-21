@@ -99,25 +99,28 @@
 #other-img-3 {
     height: 50%;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 25px;
     /* border: 1px solid black; */
 }
 
 #other-img-3 img {
     width: 75%;
     margin-top: 95px;
+    margin-left: 20px;
+    /* border: 1px solid black; */
 }
 
 #other-img-4 {
     height: 50%;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 25px;
     /* border: 1px solid black; */
 }
 
 #other-img-4 img {
     width: 75%;
     margin-top: 95px;
+    margin-left: 20px;
 }
 
 #spot-owner-details {

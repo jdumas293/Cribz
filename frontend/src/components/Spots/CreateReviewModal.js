@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { thunkCreateReview } from "../../store/reviews";
+import { thunkGetSpotDetails } from "../../store/spots";
 import './ReviewModal.css';
 
 export default function CreateReviewModal ({ spotId }) {
@@ -25,6 +26,8 @@ export default function CreateReviewModal ({ spotId }) {
         }
 
         await dispatch(thunkCreateReview(newReview, spotId, user))
+            .then(() => dispatch(thunkGetSpotDetails(spotId)))
+            .then(() => history.push(`/spots/${spotId}`))
             .then(closeModal)
             .catch(
                 async(res) => {
@@ -32,7 +35,6 @@ export default function CreateReviewModal ({ spotId }) {
                     if (data && data.errors) setErrors(data.errors);
                 }
             )
-            history.push(`/spots/${spotId}`);
     }
 
     return (
