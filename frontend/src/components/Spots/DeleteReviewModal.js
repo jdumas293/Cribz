@@ -10,7 +10,7 @@ export default function DeleteReviewModal ({ reviewId, spotId }) {
     const handleDelete = async (e) => {
         e.preventDefault();
 
-        await dispatch(thunkDeleteReview(reviewId));
+        await dispatch(thunkDeleteReview(reviewId))
         closeModal();
     };
 

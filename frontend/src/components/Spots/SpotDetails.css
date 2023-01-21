@@ -4,7 +4,8 @@
     margin-left: 200px;
     margin-right: 200px;
     margin-top: 10px;
-    /* border: 1px solid black */
+    font-family: 'Titillium Web', sans-serif;
+    /* border: 1px solid black; */
 }
 
 #spot-details h1 {
@@ -13,8 +14,13 @@
 }
 
 #spot-details h5 {
+    width: 400px;
     margin-bottom: 0px;
-    width: 350px;
+    /* border: 1px solid black; */
+}
+
+.spot-name-rating-location-container {
+    margin-bottom: 0px;
     /* border: 1px solid black; */
 }
 
@@ -118,6 +124,7 @@
     margin-left: 200px;
     margin-right: 200px;
     margin-bottom: 30px;
+    font-family: 'Titillium Web', sans-serif;
     /* border: 1px solid black; */
 }
 
@@ -126,6 +133,7 @@
     margin-right: 200px;
     margin-bottom: 30px;
     margin-top: 30px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 #description-line-break {
@@ -138,6 +146,14 @@
     margin-right: 200px;
 }
 
+.review-display {
+    font-family: 'Titillium Web', sans-serif;
+}
+
 .review-display h3 {
     text-decoration: underline;
+}
+
+#delete-spot-btn-container {
+    margin-right: 10px;
 }

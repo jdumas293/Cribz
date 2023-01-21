@@ -81,7 +81,6 @@ const reviewsReducer = (state = initialState, action) => {
         case CREATE_REVIEW: {
             newState = { ...state, allReviews: {...state.allReviews} };
             newState.allReviews[action.payload.id] = action.payload;
-            console.log('newState', newState);
             return newState;
         }
         case DELETE_REVIEW: {

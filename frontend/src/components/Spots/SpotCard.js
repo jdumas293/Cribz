@@ -23,7 +23,6 @@ export default function SpotCard ({ spot }) {
                     <h5>${spot.price} night</h5>
                 </div>
             </div>
-
         </div>
     )
 }

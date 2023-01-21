@@ -24,7 +24,7 @@ export default function CreateReviewModal ({ spotId }) {
             stars
         }
 
-        dispatch(thunkCreateReview(newReview, spotId, user))
+        await dispatch(thunkCreateReview(newReview, spotId, user))
             .then(closeModal)
             .catch(
                 async(res) => {

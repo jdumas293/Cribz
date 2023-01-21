@@ -31,17 +31,23 @@ export default function SpotDetails () {
         <>
             <div className='spot-details-container'>
                 <div id='spot-details'>
-                    <h1>{spot.name}</h1>
-                    <h5>★{Number(spot.avgStarRating).toFixed(2)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}</h5>
+                    <div className='spot-name-rating-location-container'>
+                        <h1>{spot.name}</h1>
+                        <h5>★{Number(spot.avgStarRating).toFixed(2)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}</h5>
+                    </div>
                     <div className='update-delete-container'>
-                        <OpenModalButton
-                            buttonText="Delete Spot"
-                            modalComponent={<DeleteSpotModal spotId={spot.id} />}
-                        />
-                        <OpenModalButton
-                            buttonText="Edit Spot"
-                            modalComponent={<UpdateSpotModal spot={spot} />}
-                        />
+                        <div id='delete-spot-btn-container'>
+                            <OpenModalButton
+                                buttonText="Delete Spot"
+                                modalComponent={<DeleteSpotModal spotId={spot.id} />}
+                            />
+                        </div>
+                        <div id='edit-spot-btn-container'>
+                            <OpenModalButton
+                                buttonText="Edit Spot"
+                                modalComponent={<UpdateSpotModal spot={spot} />}
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className='spot-detail-image-container'>
