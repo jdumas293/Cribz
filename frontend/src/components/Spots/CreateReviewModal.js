@@ -47,7 +47,7 @@ export default function CreateReviewModal ({ spotId }) {
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                <label>
+                <label id='review-input-label'>
                     Review:
                     <br />
                     <textarea
@@ -55,15 +55,20 @@ export default function CreateReviewModal ({ spotId }) {
                         onChange={(e) => setReview(e.target.value)}
                     />
                 </label>
-                <label>
+                <label id='stars-input-label'>
                     Stars:
-                    <br />
-                    <input
-                        type='number'
+                    &nbsp;
+                    <select
                         name='stars'
                         value={stars}
                         onChange={(e) => setStars(e.target.value)}
-                    />
+                    >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
                 </label>
                 <br />
                 <button onSubmit={handleSubmit}>Submit</button>

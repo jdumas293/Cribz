@@ -8,8 +8,17 @@
     font-family: 'Titillium Web', sans-serif;
 }
 
-.review-form label {
+/* .review-form label {
     align-self: center;
+} */
+
+#review-input-label {
+    align-self: center;
+}
+
+#stars-input-label {
+    align-self: flex-start;
+    margin-left: 60px;
 }
 
 .review-form h1 {
@@ -30,3 +39,4 @@
     background-color: rgba(230, 30, 77, 0.9);
     color: white;
 }
+

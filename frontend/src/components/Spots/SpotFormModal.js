@@ -130,7 +130,7 @@ export default function SpotFormModal () {
                     Preview Image:
                     <br />
                     <input
-                        type='text'
+                        type='url'
                         name='previewImage'
                         value={previewImage}
                         onChange={(e) => setPreviewImage(e.target.value)}
