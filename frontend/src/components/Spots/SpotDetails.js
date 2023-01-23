@@ -19,6 +19,11 @@ export default function SpotDetails () {
     const spot = useSelector(state => state.spots.singleSpot);
     const reviews = Object.values(useSelector(state => state.reviews.allReviews));
 
+    const isNumber = (num) => {
+        if (isNaN(num)) return 'n/a';
+        else return Number(num).toFixed(2);
+    };
+
     useEffect(() => {
         dispatch(thunkGetSpotDetails(spotId));
     }, [dispatch, spotId]);
@@ -33,7 +38,7 @@ export default function SpotDetails () {
                 <div id='spot-details'>
                     <div className='spot-name-rating-location-container'>
                         <h1>{spot.name}</h1>
-                        <h5>★{Number(spot.avgStarRating).toFixed(2)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}</h5>
+                        <h5>★{isNumber(spot.avgStarRating)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}</h5>
                     </div>
                     <div className='update-delete-container'>
                         <div id='delete-spot-btn-container'>
@@ -81,7 +86,7 @@ export default function SpotDetails () {
             </div>
             <hr id='spot-details-line-break'/>
             <div className='review-display'>
-                <h3>★{Number(spot.avgStarRating).toFixed(2)} · {spot.numReviews} reviews</h3>
+                <h3>★{isNumber(spot.avgStarRating)} · {spot.numReviews} reviews</h3>
                 <div className='create-delete-review-container'>
                     <OpenModalButton
                         buttonText="Create Review"

@@ -9,6 +9,11 @@ export default function SpotCard ({ spot }) {
         history.push(`/spots/${spot.id}`);
     }
 
+    const isNumber = (num) => {
+        if (isNaN(num)) return 'n/a';
+        else return Number(num).toFixed(2);
+    };
+
     return (
         <div className='container' onClick={handleClick}>
             <div className='image-container'>
@@ -17,7 +22,7 @@ export default function SpotCard ({ spot }) {
             <div className='details-container'>
                 <div id='other-details'>
                     <h5>{spot.city}, {spot.state}</h5>
-                    <h5>★{Number(spot.avgRating).toFixed(2)}</h5>
+                    <h5>★{isNumber(spot.avgRating)}</h5>
                 </div>
                 <div id='price-details'>
                     <h5>${spot.price} night</h5>
