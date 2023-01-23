@@ -131,6 +131,10 @@
     /* border: 1px solid black; */
 }
 
+#spot-owner-details h5 {
+    margin-top: 1px;
+}
+
 #spot-description-container {
     margin-left: 200px;
     margin-right: 200px;

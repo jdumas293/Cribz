@@ -77,7 +77,8 @@ export default function SpotDetails () {
                     </div>
                 </div>
                 <div id='spot-owner-details'>
-                    <h3>Hosted by...</h3>
+                    <h3>Hosted by Demo</h3>
+                    <h5>4 guests · 3 bedrooms · 3 beds · 4 baths</h5>
                 </div>
                 <hr id='description-line-break' />
                 <div id='spot-description-container'>
