@@ -18,11 +18,32 @@ export default function SpotDetails () {
 
     const spot = useSelector(state => state.spots.singleSpot);
     const reviews = Object.values(useSelector(state => state.reviews.allReviews));
+    const currUserId = useSelector(state => state.session?.user?.id);
 
     const isNumber = (num) => {
         if (isNaN(num)) return 'n/a';
         else return Number(num).toFixed(2);
     };
+
+    // function to only show the delete spot btn if you are the current owner of the spot
+    const showDeleteSpotBtn = () => {
+        if (currUserId === spot.ownerId) {
+            return <OpenModalButton
+                buttonText="Delete Spot"
+                modalComponent={<DeleteSpotModal spotId={spot.id} />}
+            />
+        }
+    }
+
+    // function to only show the edit spot btn if you are the current owner of the spot
+    const showEditSpotBtn = () => {
+        if (currUserId === spot.ownerId) {
+            return <OpenModalButton
+                buttonText="Edit Spot"
+                modalComponent={<UpdateSpotModal spot={spot} />}
+            />
+        }
+    }
 
     useEffect(() => {
         dispatch(thunkGetSpotDetails(spotId));
@@ -42,16 +63,10 @@ export default function SpotDetails () {
                     </div>
                     <div className='update-delete-container'>
                         <div id='delete-spot-btn-container'>
-                            <OpenModalButton
-                                buttonText="Delete Spot"
-                                modalComponent={<DeleteSpotModal spotId={spot.id} />}
-                            />
+                            { showDeleteSpotBtn() }
                         </div>
                         <div id='edit-spot-btn-container'>
-                            <OpenModalButton
-                                buttonText="Edit Spot"
-                                modalComponent={<UpdateSpotModal spot={spot} />}
-                            />
+                            { showEditSpotBtn() }
                         </div>
                     </div>
                 </div>
