@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_REVIEWS = 'reviews/loadReviews';
 const CREATE_REVIEW = 'reviews/createReview';
+const EDIT_REVIEW = 'reviews/editReview';
 const DELETE_REVIEW = 'reviews/deleteReview';
 
 // ACTION CREATORS
@@ -18,6 +19,13 @@ export const createReview = (review) => {
         payload: review
     };
 };
+
+export const editReview = (review) => {
+    return {
+        type: EDIT_REVIEW,
+        payload: review
+    }
+}
 
 export const deleteReview = (reviewId) => {
     return {
@@ -55,6 +63,22 @@ export const thunkCreateReview = (review, spotId, user) => async (dispatch) => {
     };
 };
 
+export const thunkEditReview = (review) => async (dispatch) => {
+    const response = await csrfFetch(`/api/reviews/${review.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(review)
+    })
+
+    if (response.ok) {
+        const editedReview = await response.json();
+        dispatch(editReview(editedReview))
+        return editedReview;
+    }
+};
+
 export const thunkDeleteReview = (reviewId) => async (dispatch) => {
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE'
@@ -81,6 +105,11 @@ const reviewsReducer = (state = initialState, action) => {
         case CREATE_REVIEW: {
             newState = { ...state, allReviews: {...state.allReviews} };
             newState.allReviews[action.payload.id] = action.payload;
+            return newState;
+        }
+        case EDIT_REVIEW: {
+            newState = { ...state, allReviews: {...state.allReviews} };
+            newState.allReviews[action.payload.id] = {...action.payload};
             return newState;
         }
         case DELETE_REVIEW: {

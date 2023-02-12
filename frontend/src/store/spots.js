@@ -93,7 +93,7 @@ export const thunkCreateSpot = (spot, url, user) => async (dispatch) => {
 };
 
 export const thunkUpdateSpot = (spot) => async (dispatch) => {
-    console.log('spot', spot);
+    // console.log('spot', spot);
     const response = await csrfFetch(`/api/spots/${spot.id}`, {
         method: 'PUT',
         headers: {

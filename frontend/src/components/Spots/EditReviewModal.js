@@ -1,49 +1,47 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { thunkCreateReview } from "../../store/reviews";
-import { thunkGetSpotDetails } from "../../store/spots";
-import './ReviewModal.css';
+import { thunkEditReview } from "../../store/reviews";
+import "./EditReviewModal.css";
 
-export default function CreateReviewModal ({ spotId }) {
+
+export default function EditReviewModal({ prevReview, spotId }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [review, setReview] = useState('');
-    const [stars, setStars] = useState(0);
+    const [review, setReview] = useState(prevReview.review);
+    const [stars, setStars] = useState(prevReview.stars);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
-    const user = useSelector(state => state.session.user);
-
-    const handleSubmit = async (e) => {
+    const handleEdit = async (e) => {
         e.preventDefault();
         setErrors([]);
 
-        const newReview = {
+        const editReview = {
+            ...prevReview,
             review,
             stars
-        }
+        };
 
-        await dispatch(thunkCreateReview(newReview, spotId, user))
-            .then(() => dispatch(thunkGetSpotDetails(spotId)))
-            .then(() => history.push(`/spots/${spotId}`))
+        dispatch(thunkEditReview(editReview))
             .then(closeModal)
             .catch(
                 async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
                 }
-            )
+            );
+        history.push(`/spots/${spotId}`);
     }
 
     return (
         <div>
             <form
                 className='review-form'
-                onSubmit={handleSubmit}
+                onSubmit={handleEdit}
             >
-                <h1>Create Review</h1>
+                <h1>Edit Review</h1>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
@@ -72,7 +70,7 @@ export default function CreateReviewModal ({ spotId }) {
                     </select>
                 </label>
                 <br />
-                <button onSubmit={handleSubmit}>Submit</button>
+                <button onSubmit={handleEdit}>Submit</button>
                 <br />
             </form>
         </div>

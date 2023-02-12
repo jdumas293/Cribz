@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 
 import DeleteReviewModal from "./DeleteReviewModal";
+import EditReviewModal from "./EditReviewModal";
 import OpenModalButton from "../OpenModalButton";
 import './ReviewDetails.css';
 
@@ -22,7 +23,7 @@ export default function ReviewCard ({ review, spotId }) {
         if (currUserId === review.userId) {
             return <OpenModalButton
                 buttonText='Edit'
-                // modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId} />}
+                modalComponent={<EditReviewModal prevReview={review} spotId={spotId} />}
             />
         }
     }
