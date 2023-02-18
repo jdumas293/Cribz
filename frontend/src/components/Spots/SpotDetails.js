@@ -11,6 +11,7 @@ import CreateReviewModal from './CreateReviewModal';
 import './SpotDetails.css';
 import './ReviewDetails.css';
 import logoImg from '../../assets/cribz-black.png';
+import ShowCurrUserBookings from '../Bookings/ShowCurrUserBookings';
 
 export default function SpotDetails () {
     const dispatch = useDispatch();
@@ -114,6 +115,10 @@ export default function SpotDetails () {
                 </div>
                 <br />
                 <br />
+            </div>
+            <div>
+                <h3>Current User Bookings</h3>
+                <ShowCurrUserBookings />
             </div>
         </>
     )
