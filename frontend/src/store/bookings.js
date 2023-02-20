@@ -13,6 +13,13 @@ export const getCurrUserBookings = (bookings) => {
     };
 };
 
+export const createBooking = (booking) => {
+    return {
+        type: CREATE_BOOKING,
+        payload: booking
+    };
+};
+
 
 // THUNK ACTION CREATORS
 export const thunkGetCurrUserBookings = () => async (dispatch) => {
@@ -24,6 +31,22 @@ export const thunkGetCurrUserBookings = () => async (dispatch) => {
         dispatch(getCurrUserBookings(bookings.Bookings));
         return bookings;
     };
+};
+
+export const thunkCreateBooking = (spotId, booking) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}/bookings`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(booking)
+    });
+
+    if (response.ok) {
+        const newBooking = await response.json();
+        dispatch(createBooking(newBooking));
+        return newBooking;
+    }
 };
 
 
@@ -38,6 +61,11 @@ const bookingsReducer = (state = initialState, action) => {
             action.payload.forEach(booking => {
                 newState.allBookings[booking.id] = booking;
             });
+            return newState;
+        }
+        case CREATE_BOOKING: {
+            newState = { ...state, allBookings: {...state.allBookings}, singleBooking: {...state.singleBooking} };
+            newState.singleBooking = action.payload;
             return newState;
         }
         default:

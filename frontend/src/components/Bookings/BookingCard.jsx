@@ -14,7 +14,7 @@ const BookingCard = ({ booking }) => {
                 End Date: {booking.endDate}
             </div>
             <div>
-                Price: ${booking.Spot.price}
+                Price: {booking.Spot.price}
             </div>
         </>
     )

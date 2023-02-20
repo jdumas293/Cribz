@@ -1,0 +1,28 @@
+.booking-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-form-details-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* border: 1px solid red; */
+}
+
+.start-date-container {
+    border: 1px solid black;
+    margin-bottom: 1em;
+    width: fit-content;
+}
+
+.end-date-container {
+    border: 1px solid black;
+    margin-bottom: 1em;
+    width: fit-content;
+}
+
+.booking-form button {
+    margin-bottom: 2em;
+    width: 200px;
+}

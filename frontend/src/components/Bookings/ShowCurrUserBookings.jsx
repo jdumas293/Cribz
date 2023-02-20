@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetCurrUserBookings } from "../../store/bookings";
 import BookingCard from "./BookingCard";
+import CreateBooking from "./CreateBooking";
 
 const ShowCurrUserBookings = () => {
     const dispatch = useDispatch();
@@ -14,9 +15,15 @@ const ShowCurrUserBookings = () => {
     }, [dispatch]);
 
     return (
-        <div>
-            {bookings.map(booking => <BookingCard booking={booking} />)}
-        </div>
+        <>
+            <div>
+                {bookings.map(booking => <BookingCard booking={booking} />)}
+            </div>
+            <div>
+                <CreateBooking />
+            </div>
+        
+        </>
     )
 }
 
