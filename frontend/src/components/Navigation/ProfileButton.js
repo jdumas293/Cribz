@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
@@ -8,6 +9,7 @@ import './Navigation.css';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
 
@@ -53,6 +55,9 @@ function ProfileButton({ user }) {
                         <li>{user.email}</li>
                         <li>
                             <button id='logout-current-user-btn' onClick={logout}>Log Out</button>
+                        </li>
+                        <li>
+                            <button id='user-dash' onClick={() => history.push(`/dashboard/${user?.id}`)}>User Profile</button>
                         </li>
                     </>
                 ) : (

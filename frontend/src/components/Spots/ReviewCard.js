@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-
 import DeleteReviewModal from "./DeleteReviewModal";
 import EditReviewModal from "./EditReviewModal";
 import OpenModalButton from "../OpenModalButton";
@@ -13,7 +12,7 @@ export default function ReviewCard ({ review, spotId }) {
     const showDeleteReviewBtn = () => {
         if (currUserId === review.userId) {
             return <OpenModalButton
-                buttonText='Delete'
+                buttonText={<i class="fa-solid fa-trash"></i>}
                 modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId} />}
             />
         }
@@ -22,7 +21,7 @@ export default function ReviewCard ({ review, spotId }) {
     const showEditReviewBtn = () => {
         if (currUserId === review.userId) {
             return <OpenModalButton
-                buttonText='Edit'
+                buttonText={<i class="fa-solid fa-pen-to-square"></i>}
                 modalComponent={<EditReviewModal prevReview={review} spotId={spotId} />}
             />
         }
@@ -31,11 +30,21 @@ export default function ReviewCard ({ review, spotId }) {
     return (
         <>
             <div className='review-container'>
-                <div id='review-details'>
-                    <h5>{review.User.firstName} {review.User.lastName}:</h5>
-                    <p>{review.review}</p>
-                    { showDeleteReviewBtn() }
-                    { showEditReviewBtn() }
+                <div className='review-details'>
+                    <div className="review-owner">
+                        {review?.User?.firstName} {review?.User?.lastName}:
+                    </div>
+                    <div className="review-body">
+                        <p>{review.review}</p>
+                    </div>
+                </div>
+                <div className="review-btns-container">
+                    <div className="delete-review-btn">
+                        { showDeleteReviewBtn() }
+                    </div>
+                    <div className="edit-review-btn">
+                        { showEditReviewBtn() }
+                    </div>
                 </div>
             </div>
         </>

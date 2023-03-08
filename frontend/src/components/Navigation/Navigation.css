@@ -17,11 +17,17 @@
 .nav-container {
     display: flex;
     flex-direction: row;
+    height: 50px;
+    /* background-color: whitesmoke; */
+    border-bottom: 1px solid black;
+}
+
+.nav-elements-container {
+    display: flex;
+    width: 100%;
     margin-left: 100px;
     margin-right: 100px;
-    height: 50px;
-    border-bottom: 1px solid black;
-    /* position: fixed; */
+    /* border: 1px solid red; */
 }
 
 .home-btn {
@@ -105,6 +111,21 @@
     color: white;
     cursor: pointer;
 }
+
+#user-dash {
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    margin: 5px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#user-dash:hover {
+    background-color: rgba(230, 30, 77, 0.9);
+    color: white;
+    cursor: pointer;
+}
+
 
 #logo-img {
     width: 100px;

@@ -1,32 +1,91 @@
 .signup-form {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    padding: 10px;
+    padding: 2em;
     font-family: 'Titillium Web', sans-serif;
 }
 
-.signup-form h1 {
-    align-self: center;
+.signup-errors {
+    list-style-type: none;
+    font-size: 12px;
+    padding-bottom: 1em;
+    color: red;
 }
 
-.signup-form label {
-    padding: 10px;
-    align-self: center;
+.signup-form-elements {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.signup-email {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-email input {
+    width: 250px;
+    height: 2em;
+}
+
+.signup-username {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-username input {
+    width: 250px;
+    height: 2em;
+}
+
+.signup-firstname {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-firstname input {
+    width: 250px;
+    height: 2em;
+}
+
+.signup-lastname {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-lastname input {
+    width: 250px;
+    height: 2em;
+}
+
+.signup-password {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-password input {
+    width: 250px;
+    height: 2em;
+}
+
+.signup-confirm-pw {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-confirm-pw input {
+    width: 250px;
+    height: 2em;
 }
 
 .signup-form button {
     align-self: center;
-    width: 150px;
-    color: rgb(230, 30, 77);
+    width: 100%;
+    color: white;
     border-color: rgb(230, 30, 77);
-    background-color: white;
+    border-radius: 10px;
+    background-color: rgb(230, 30, 77);
     padding: 5px;
     font-family: 'Titillium Web', sans-serif;
-}
-
-.signup-form button:hover {
-    color: white;
-    background-color: rgba(230, 30, 77, 0.9);
     cursor: pointer;
 }

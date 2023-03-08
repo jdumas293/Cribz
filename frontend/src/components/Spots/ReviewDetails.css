@@ -1,38 +1,80 @@
 .review-display {
     display: flex;
-    flex-direction: column;
+    margin-left: 200px;
+    width: 100%;
+    gap: 2em;
+    /* border: 1px solid black; */
+}
+
+.reviewCard-container {
+    display: flex;
     margin-left: 200px;
     margin-right: 200px;
-    /* border: 1px solid black; */
+    /* width: 100%; */
+    /* border: 1px solid red; */
 }
 
 .reviewCard-list {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    padding: 1em;
     /* border: 1px solid black; */
 }
 
-#review-details h5 {
-    /* border: 1px solid black */
+.review-details {
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    /* padding: 1em; */
+    /* border: 1px solid black; */
+}
+
+.review-header {
     text-decoration: underline;
-    margin-bottom: 0px;
-    margin-top: 30px;
+    font-size: 16px;
+    padding-bottom: 1em;
+    /* border: 1px solid black */
 }
 
-#review-details button {
-    width: 55px;
-    height: 25px;
+
+.delete-review-btn button {
+    width: fit-content;
+    border: none;
     background-color: white;
-    border: 1px solid rgb(230, 30, 77);
-    color: rgb(230, 30, 77);
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 12px;
-}
-
-#review-details button:hover {
-    background-color: rgba(230, 30, 77, 0.9);
-    color: white;
     cursor: pointer;
 }
 
+.edit-review-btn button {
+    width: fit-content;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.review-owner {
+    font-size: 12px;
+    /* border: 1px solid black; */
+}
+
+.review-body {
+    font-size: 12px;
+    padding-left: 5px;
+    /* border: 1px solid black; */
+}
+
+.review-container {
+    display: flex;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 1em;
+    width: 1080px;
+    gap: 2em;
+    /* font-family: 'Titillium Web', sans-serif; */
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    /* border: 1px solid black; */
+}
+
+.review-btns-container {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid black; */
+}

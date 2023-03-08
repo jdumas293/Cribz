@@ -19,10 +19,6 @@ const ShowCurrUserBookings = () => {
             <div>
                 {bookings.map(booking => <BookingCard booking={booking} />)}
             </div>
-            <div>
-                <CreateBooking />
-            </div>
-        
         </>
     )
 }

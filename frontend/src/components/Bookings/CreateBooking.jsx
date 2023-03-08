@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { thunkCreateBooking } from "../../store/bookings";
+import Calendar from "react-select-date";
 import './CreateBooking.css';
 
 const CreateBooking = () => {
@@ -12,8 +13,9 @@ const CreateBooking = () => {
     const [errors, setErrors] = useState([]);
 
     const spot = useSelector(state => state.spots.singleSpot);
-    console.log("SPOT ===>", spot.id);
     const user = useSelector(state => state.session.user);
+    console.log("SPOT ===>", spot);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -24,7 +26,7 @@ const CreateBooking = () => {
             endDate
         };
 
-        console.log("NEW BOOKING ===>", newBooking)
+        // console.log("NEW BOOKING ===>", newBooking);
 
         dispatch(thunkCreateBooking(spot.id, newBooking))
             .catch(
@@ -39,33 +41,50 @@ const CreateBooking = () => {
     return (
         <div>
             <form className="booking-form" onSubmit={handleSubmit}>
-                <ul>
+                {/* <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
+                </ul> */}
+                <div className="booking-text-container">
+                    <div className="booking-form-info-container">
+                        <div className="booking-price">
+                            ${spot.price} night
+                        </div>
+                        <div>
+                            ★{spot.avgStarRating}
+                        </div>
+                    </div>
+                </div>
                 <div className="booking-form-details-container">
                     <div className="start-date-container">
                         <label>
-                            Start Date:
+                            Check-In:
+                        </label>
                             <input
+                                placeholder="Start Date"
                                 type="date"
                                 name="startDate"
                                 value={startDate}
                                 onChange={(e) => setStartDate(e.target.value)}
                             />
-                        </label>
                     </div>
                     <div className="end-date-container">
                         <label>
-                            End Date:
+                            Check-Out:
+                        </label>
                             <input
+                                placeholder="End Date"
                                 type="date"
                                 name="endDate"
                                 value={endDate}
                                 onChange={(e) => setEndDate(e.target.value)}
                             />
-                        </label>
                     </div>
-                    <button onSubmit={handleSubmit}>Create Booking</button>
+                    {/* <Calendar
+                        className="calendar"
+                        onSelect={(date) => console.log(date)}
+                        selectDateType="range"
+                    /> */}
+                    <button onSubmit={handleSubmit}>Reserve</button>
                 </div>
             </form>
         </div>

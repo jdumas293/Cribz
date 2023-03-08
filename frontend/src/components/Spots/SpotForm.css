@@ -1,34 +1,112 @@
 .spot-form {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 25px;
+    padding: 2em;
     font-family: 'Titillium Web', sans-serif;
 }
 
-.spot-form label {
-    align-self: center;
+.spot-form-errors {
+    list-style-type: none;
+    font-size: 12px;
+    padding-bottom: 1em;
+    color: red;
 }
 
-.spot-form h1 {
-    align-self: center;
+.spot-form-elements {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.upload-address {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-address input {
+    width: 250px;
+    height: 2em;
+}
+
+.upload-city {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-city input {
+    width: 250px;
+    height: 2em;
+}
+
+.upload-state {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-state input {
+    width: 250px;
+    height: 2em;
+}
+
+.upload-country {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-country input {
+    width: 250px;
+    height: 2em;
+}
+
+.upload-spot-name {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-spot-name input {
+    width: 250px;
+    height: 2em;
+}
+
+.upload-description {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-description textarea {
+    width: 250px;
+    height: 4em;
+}
+
+.upload-price {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-price input {
+    width: 250px;
+    height: 2em;
+}
+
+.upload-spot-image {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-spot-image input {
+    width: 250px;
+    height: 2em;
 }
 
 .spot-form button {
     align-self: center;
-    width: 150px;
-    color: rgb(230, 30, 77);
+    width: 100%;
+    color: white;
     border-color: rgb(230, 30, 77);
-    background-color: white;
+    border-radius: 10px;
+    background-color: rgb(230, 30, 77);
     padding: 5px;
     font-family: 'Titillium Web', sans-serif;
-}
-
-.spot-form button:hover {
-    color: white;
-    background-color: rgba(230, 30, 77, 0.9);
     cursor: pointer;
 }
 

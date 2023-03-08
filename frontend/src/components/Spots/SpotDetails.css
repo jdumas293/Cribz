@@ -1,36 +1,37 @@
-#spot-details {
+.spot-details-container {
     display: flex;
-    flex-direction: column;
     margin-left: 200px;
     margin-right: 200px;
-    margin-top: 10px;
-    font-family: 'Titillium Web', sans-serif;
-    /* border: 1px solid black; */
+    /* border: 1px solid red; */
 }
 
-#spot-details h1 {
-    margin-bottom: 0px;
-    /* border: 1px solid black; */
-}
-
-#spot-details h5 {
-    width: 400px;
-    margin-bottom: 0px;
-    /* border: 1px solid black; */
-}
-
-.spot-name-rating-location-container {
-    margin-bottom: 0px;
-    /* border: 1px solid black; */
-}
-
-.update-delete-container {
+.spot-details {
     display: flex;
-    flex-direction: row;
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    align-self: flex-end;
+    flex-direction: column;
+    width: 100%;
+    gap: 1em;
+    padding-top: 2em;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    /* border: 1px solid black; */
+}
+
+.spot-details-name {
+    display: flex;
+    font-size: 30px;
+    /* border: 1px solid black; */
+}
+
+.spot-details-rating {
+    display: flex;
+    font-size: 15px;
+    /* border: 1px solid black; */
+}
+
+.update-delete-spot-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
     /* border: 1px solid black; */
 }
 
@@ -42,6 +43,13 @@
     margin-right: 200px;
     margin-top: 10px;
     /* border: 1px solid black */
+}
+
+#main-image-container {
+    display: flex;
+    width: 100%;
+    /* justify-content: center; */
+    /* border: 1px solid black; */
 }
 
 #main-image-container img {
@@ -123,42 +131,27 @@
     margin-left: 20px;
 }
 
-#spot-owner-details {
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-bottom: 30px;
-    font-family: 'Titillium Web', sans-serif;
+
+
+.spot-owner-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid lightgrey;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
     /* border: 1px solid black; */
 }
 
-#spot-owner-details h5 {
-    margin-top: 1px;
-}
-
 #spot-description-container {
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    font-family: 'Titillium Web', sans-serif;
-}
-
-#description-line-break {
-    margin-left: 200px;
-    margin-right: 200px;
-}
-
-#spot-details-line-break {
-    margin-left: 200px;
-    margin-right: 200px;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    /* border: 1px solid red; */
 }
 
 .review-display {
-    font-family: 'Titillium Web', sans-serif;
-}
-
-.review-display h3 {
-    text-decoration: underline;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    margin-left: 0px;
+    /* border: 1px solid black; */
 }
 
 #delete-spot-btn-container {
@@ -166,29 +159,26 @@
 }
 
 #delete-spot-btn-container button {
-    width: 90px;
-    height: 30px;
-    background-color: white;
-    border: 1px solid rgb(230, 30, 77);
-    color: rgb(230, 30, 77);
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 13px;
-}
-
-#delete-spot-btn-container button:hover {
-    background-color: rgb(230, 30, 77);
-    color: white;
     cursor: pointer;
+    width: 90px;
+    height: 35px;
+    background-color: rgb(230, 30, 77);;
+    border-radius: 10px;
+    color: white;
+    font-size: 13px;
+    border-color: rgb(230, 30, 77);
+    font-family: 'Titillium Web', sans-serif;
 }
 
 #edit-spot-btn-container button {
     width: 90px;
-    height: 30px;
-    background-color: white;
-    border: 1px solid rgb(230, 30, 77);
-    color: rgb(230, 30, 77);
+    height: 35px;
+    background-color: rgb(230, 30, 77);
+    border-radius: 10px;
+    color: white;
     font-family: 'Titillium Web', sans-serif;
     font-size: 13px;
+    border-color: rgb(230, 30, 77);
 }
 
 #edit-spot-btn-container button:hover {
@@ -198,17 +188,51 @@
 }
 
 .create-delete-review-container button {
-    width: 100px;
+    /* width: 100px; */
     height: 35px;
-    background-color: white;
-    border: 1px solid rgb(230, 30, 77);
-    color: rgb(230, 30, 77);
+    background-color: rgb(230, 30, 77);
+    border-color: rgb(230, 30, 77);
+    border-radius: 5px;
+    color: white;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
+    cursor: pointer;
 }
 
-.create-delete-review-container button:hover {
-    background-color: rgb(230, 30, 77);
-    color: white;
-    cursor: pointer;
+.booking-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 200px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 50%;
+    /* font-family: 'Titillium Web', sans-serif; */
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    /* border: 1px solid black; */
+}
+
+.details-booking-container {
+    width: 50%;
+    height: fit-content;
+    margin-left: 200px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.bottomhalf-container {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 200px;
+    margin-left: 200px;
+    /* border: 1px solid black; */
+}
+
+.spot-owner-details {
+    display: flex;
+    gap: 1em;
+    /* border: 1px solid red; */
+}
+
+.middle-container {
+    display: flex;
 }

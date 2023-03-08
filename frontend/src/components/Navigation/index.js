@@ -12,6 +12,7 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='nav-container'>
+      <div className='nav-elements-container'>
         <div className='home-btn'>
           <NavLink exact to="/"><img id='logo-img' src={logo} alt='Cribz' /></NavLink>
         </div>
@@ -29,6 +30,7 @@ function Navigation({ isLoaded }){
             )}
           </div>
         </div>
+      </div>
     </div>
   );
 }

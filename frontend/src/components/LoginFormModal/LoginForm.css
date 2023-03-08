@@ -2,32 +2,52 @@
     display: flex;
     flex-direction: column;
     border-radius: 50px;
-    width: 300px;
-    padding: 10px;
+    padding: 2em;
     font-family: 'Titillium Web', sans-serif;
 }
 
-.login-form h1 {
-    align-self: center;
+.login-errors {
+    list-style-type: none;
+    font-size: 12px;
+    padding-bottom: 1em;
+    color: red;
 }
 
-.login-form label {
-    padding: 10px;
-    align-self: center;
+.login-form-elements {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    /* border: 1px solid black; */
+}
+
+.login-cred {
+    display: flex;
+    justify-content: center;
+}
+
+.login-cred input {
+    width: 250px;
+    height: 2em;
+}
+
+.login-password {
+    display: flex;
+    justify-content: center;
+}
+
+.login-password input {
+    width: 250px;
+    height: 2em;
 }
 
 .login-form button {
     align-self: center;
-    width: 150px;
-    color: rgb(230, 30, 77);
+    width: 100%;
+    color: white;
     border-color: rgb(230, 30, 77);
-    background-color: white;
+    border-radius: 10px;
+    background-color: rgb(230, 30, 77);
     padding: 5px;
     font-family: 'Titillium Web', sans-serif;
-}
-
-.login-form button:hover {
-    color: white;
-    background-color: rgba(230, 30, 77, 0.9);
     cursor: pointer;
 }

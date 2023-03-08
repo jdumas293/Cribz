@@ -11,7 +11,7 @@ import CreateReviewModal from './CreateReviewModal';
 import './SpotDetails.css';
 import './ReviewDetails.css';
 import logoImg from '../../assets/cribz-black.png';
-import ShowCurrUserBookings from '../Bookings/ShowCurrUserBookings';
+import CreateBooking from '../Bookings/CreateBooking';
 
 export default function SpotDetails () {
     const dispatch = useDispatch();
@@ -57,68 +57,63 @@ export default function SpotDetails () {
     return (
         <>
             <div className='spot-details-container'>
-                <div id='spot-details'>
-                    <div className='spot-name-rating-location-container'>
-                        <h1>{spot.name}</h1>
-                        <h5>★{isNumber(spot.avgStarRating)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}</h5>
+                <div className='spot-details'>
+                    <div className='spot-details-name'>
+                        {spot.name}
                     </div>
-                    <div className='update-delete-container'>
-                        <div id='delete-spot-btn-container'>
-                            { showDeleteSpotBtn() }
-                        </div>
-                        <div id='edit-spot-btn-container'>
-                            { showEditSpotBtn() }
-                        </div>
+                    <div className='spot-details-rating'>
+                        ★{isNumber(spot.avgStarRating)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}
                     </div>
                 </div>
-                <div className='spot-detail-image-container'>
-                    <div id='main-image-container'>
-                        <img src={spot.SpotImages && spot.SpotImages[0].url} alt={spot.name}/>
+                <div className='update-delete-spot-container'>
+                    <div id='delete-spot-btn-container'>
+                        { showDeleteSpotBtn() }
                     </div>
-                    <div id='other-images-half-1'>
-                        <div id='other-img-1'>
-                            <img src={logoImg} alt='Cribz' />
-                        </div>
-                        <div id='other-img-2'>
-                            <img src={logoImg} alt='Cribz' />
-                        </div>
+                    <div id='edit-spot-btn-container'>
+                        { showEditSpotBtn() }
                     </div>
-                    <div id='other-images-half-2'>
-                        <div id='other-img-3'>
-                            <img src={logoImg} alt='Cribz' />
-                        </div>
-                        <div id='other-img-4'>
-                            <img src={logoImg} alt='Cribz' />
-                        </div>
-                    </div>
-                </div>
-                <div id='spot-owner-details'>
-                    <h3>Hosted by Demo</h3>
-                    <h5>4 guests · 3 bedrooms · 3 beds · 4 baths</h5>
-                </div>
-                <hr id='description-line-break' />
-                <div id='spot-description-container'>
-                    <p>{spot.description}</p>
                 </div>
             </div>
-            <hr id='spot-details-line-break'/>
-            <div className='review-display'>
-                <h3>★{isNumber(spot.avgStarRating)} · {spot.numReviews} reviews</h3>
-                <div className='create-delete-review-container'>
-                    <OpenModalButton
-                        buttonText="Create Review"
-                        modalComponent={<CreateReviewModal spotId={spot.id}/>}
-                    />
+            <div className='spot-detail-image-container'>
+                <div id='main-image-container'>
+                    <img src={spot.SpotImages && spot.SpotImages[0].url} alt={spot.name}/>
                 </div>
+            </div>
+            <div className='middle-container'>
+                <div className='details-booking-container'>
+                    <div className='spot-owner-details'>
+                        <div className='hosted-by'>
+                            Hosted by Demo
+                        </div>
+                        <div className='num-bed-bath'>
+                            4 guests · 3 bedrooms · 3 beds · 4 baths
+                        </div>
+                    </div>
+                    <div id='spot-description-container'>
+                        <p>{spot.description}</p>
+                    </div>
+                </div>
+                <div className='booking-container'>
+                    <CreateBooking />
+                </div>
+            </div>
+            <div className='bottomhalf-container'>
+                <div className='review-display'>
+                    <div className='review-header'>
+                        ★{isNumber(spot.avgStarRating)} · {spot.numReviews} reviews
+                    </div>
+                    <div className='create-delete-review-container'>
+                        <OpenModalButton
+                            buttonText="Create Review"
+                            modalComponent={<CreateReviewModal spotId={spot.id}/>}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className='reviewCard-container'>
                 <div className='reviewCard-list'>
                     {reviews.map(review => <ReviewCard review={review} spotId={spotId} key={review.id}/>)}
-                </div>
-                <br />
-                <br />
-            </div>
-            <div>
-                <h3>Current User Bookings</h3>
-                <ShowCurrUserBookings />
+                </div>     
             </div>
         </>
     )

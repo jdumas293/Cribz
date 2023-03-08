@@ -1,0 +1,35 @@
+.profile-container {
+    margin-left: 100px;
+    margin-right: 100px;
+    font-family: 'Titillium Web', sans-serif;
+    /* border: 1px solid black; */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    height: 300px;
+    gap: 1em;
+    background-color: whitesmoke;
+    border-bottom: 1px solid lightgrey;
+    /* border: 1px solid black; */
+}
+
+.profile-username {
+    text-decoration: underline;
+    /* border: 1px solid black; */
+}
+
+.profile-bookings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.profile-num-bookings {
+    font-size: 15px;
+}
