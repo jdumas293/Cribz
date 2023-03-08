@@ -32,7 +32,7 @@ export default function ReviewCard ({ review, spotId }) {
             <div className='review-container'>
                 <div className='review-details'>
                     <div className="review-owner">
-                        {review?.User?.firstName} {review?.User?.lastName}:
+                        {review?.User?.firstName} {review?.User?.lastName}
                     </div>
                     <div className="review-body">
                         <p>{review.review}</p>

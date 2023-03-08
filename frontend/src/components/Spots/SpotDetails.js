@@ -6,12 +6,11 @@ import { thunkGetReviews } from '../../store/reviews';
 import OpenModalButton from '../OpenModalButton';
 import DeleteSpotModal from './DeleteSpotModal';
 import UpdateSpotModal from './UpdateSpotModal';
-import ReviewCard from './ReviewCard';
-import CreateReviewModal from './CreateReviewModal';
-import './SpotDetails.css';
-import './ReviewDetails.css';
-import logoImg from '../../assets/cribz-black.png';
+import ReviewCard from '../Reviews/ReviewCard';
+import CreateReviewModal from '../Reviews/CreateReviewModal';
 import CreateBooking from '../Bookings/CreateBooking';
+import './SpotDetails.css';
+import '../Reviews/ReviewDetails.css';
 
 export default function SpotDetails () {
     const dispatch = useDispatch();
