@@ -1,44 +1,42 @@
 .delete-review-container {
-    width: 400px;
-    height: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
     font-family: 'Titillium Web', sans-serif;
 }
 
-.delete-review-container h3 {
+.delete-review-message {
     display: flex;
     justify-content: center;
+    font-size: 16px;
+    margin-bottom: 1em;
 }
 
-#delete-review-btns {
+.delete-review-btn-container {
     display: flex;
     justify-content: center;
+    gap: 1em;
 }
 
-#delete-review-btn {
+.delete-review-btn {
     align-self: center;
     width: 70px;
-    color: rgba(230, 30, 77, 0.9);
-    border-color: rgba(230, 30, 77, 0.9);
-    background-color: white;
+    color: white;
+    border-color: rgba(230, 30, 77);
+    border-radius: 10px;
+    background-color: rgb(230, 30, 77);
     margin-right: 20px;
     padding: 5px;
     font-family: 'Titillium Web', sans-serif;
-}
-
-#delete-review-btn:hover {
-    background-color: rgba(230, 30, 77, 0.9);
-    color: white;
     cursor: pointer;
 }
 
-#cancel-delete-btn {
+.cancel-delete-btn {
     align-self: center;
     width: 70px;
     padding: 5px;
+    border-radius: 10px;
     font-family: 'Titillium Web', sans-serif;
     background-color: white;
-}
-
-#cancel-delete-btn:hover {
     cursor: pointer;
 }

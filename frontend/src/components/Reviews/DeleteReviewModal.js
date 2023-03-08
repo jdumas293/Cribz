@@ -21,10 +21,12 @@ export default function DeleteReviewModal ({ reviewId, spotId }) {
 
     return (
         <div className='delete-review-container'>
-            <h3>Are you sure you want to delete this review?</h3>
-            <div id='delete-review-btns'>
-                <button id='delete-review-btn' onClick={handleDelete}>Delete</button>
-                <button id='cancel-delete-btn' onClick={closeModal}>Cancel</button>
+            <div className="delete-review-message">
+                Are you sure you want to delete this review?
+            </div>
+            <div className='delete-review-btn-container'>
+                <button className='delete-review-btn' onClick={handleDelete}>Delete</button>
+                <button className='cancel-delete-btn' onClick={closeModal}>Cancel</button>
             </div>
         </div>
     );

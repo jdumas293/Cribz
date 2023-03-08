@@ -19,10 +19,12 @@ export default function DeleteSpotModal ({ spotId }) {
 
     return (
         <div className='delete-spot-container'>
-            <h3>Are you sure you want to delete this spot?</h3>
-            <div id='delete-spot-btns'>
-                <button id='delete-spot-btn' onClick={handleDelete}>Delete</button>
-                <button id='cancel-delete-spot-btn' onClick={closeModal}>Cancel</button>
+            <div className="delete-message">
+                <p>Are you sure you want to delete this spot?</p>
+            </div>
+            <div className="delete-spot-btn-container">
+                <button className="delete-spot-btn" onClick={handleDelete}>Delete</button>
+                <button className="cancel-delete-spot-btn" onClick={closeModal}>Cancel</button>
             </div>
         </div>
     )

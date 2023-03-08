@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import DeleteReviewModal from "./DeleteReviewModal";
 import EditReviewModal from "./EditReviewModal";
 import OpenModalButton from "../OpenModalButton";
-import './ReviewDetails.css';
+import './ReviewCard.css';
 
 export default function ReviewCard ({ review, spotId }) {
 
@@ -12,7 +12,7 @@ export default function ReviewCard ({ review, spotId }) {
     const showDeleteReviewBtn = () => {
         if (currUserId === review.userId) {
             return <OpenModalButton
-                buttonText={<i class="fa-solid fa-trash"></i>}
+                buttonText={<i class="fa-solid fa-trash fa-sm"></i>}
                 modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId} />}
             />
         }
@@ -21,7 +21,7 @@ export default function ReviewCard ({ review, spotId }) {
     const showEditReviewBtn = () => {
         if (currUserId === review.userId) {
             return <OpenModalButton
-                buttonText={<i class="fa-solid fa-pen-to-square"></i>}
+                buttonText={<i class="fa-solid fa-pen-to-square fa-sm"></i>}
                 modalComponent={<EditReviewModal prevReview={review} spotId={spotId} />}
             />
         }
@@ -30,6 +30,9 @@ export default function ReviewCard ({ review, spotId }) {
     return (
         <>
             <div className='review-container'>
+                <div className="review-profile-image">
+                    <i class="fa-solid fa-user"></i>
+                </div>
                 <div className='review-details'>
                     <div className="review-owner">
                         {review?.User?.firstName} {review?.User?.lastName}
@@ -39,10 +42,10 @@ export default function ReviewCard ({ review, spotId }) {
                     </div>
                 </div>
                 <div className="review-btns-container">
-                    <div className="delete-review-btn">
+                    <div className="delete-review-icon">
                         { showDeleteReviewBtn() }
                     </div>
-                    <div className="edit-review-btn">
+                    <div className="edit-review-icon">
                         { showEditReviewBtn() }
                     </div>
                 </div>

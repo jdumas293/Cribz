@@ -1,33 +1,102 @@
-.update-form {
+.edit-spot-form {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 25px;
+    border-radius: 50px;
+    padding: 2em;
     font-family: 'Titillium Web', sans-serif;
 }
 
-.update-form label {
-    align-self: center;
+.edit-spot-errors {
+    list-style-type: none;
+    font-size: 12px;
+    padding-bottom: 1em;
+    color: red;
 }
 
-.update-form h1 {
-    align-self: center;
+.edit-spot-form-elements {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
-.update-form button {
+.edit-spot-address {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-spot-address input {
+    width: 250px;
+    height: 2em;
+}
+
+.edit-spot-city {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-spot-city input {
+    width: 250px;
+    height: 2em;
+}
+
+.edit-spot-state {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-spot-state input {
+    width: 250px;
+    height: 2em;
+}
+
+.edit-spot-country {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-spot-country input {
+    width: 250px;
+    height: 2em;
+}
+
+.edit-spot-name {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-spot-name input {
+    width: 250px;
+    height: 2em;
+}
+
+.edit-spot-description {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-spot-description textarea {
+    width: 250px;
+    height: 4em;
+}
+
+.edit-spot-price {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-spot-price input {
+    width: 250px;
+    height: 2em;
+}
+
+.edit-spot-form button {
     align-self: center;
-    width: 150px;
-    color: rgb(230, 30, 77);
+    width: 100%;
+    color: white;
     border-color: rgb(230, 30, 77);
-    background-color: white;
+    border-radius: 10px;
+    background-color: rgb(230, 30, 77);
     padding: 5px;
     font-family: 'Titillium Web', sans-serif;
-}
-
-.update-form button:hover {
-    color: white;
-    background-color: rgba(230, 30, 77, 0.9);
     cursor: pointer;
 }

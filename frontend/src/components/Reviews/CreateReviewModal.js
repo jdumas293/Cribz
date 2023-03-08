@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { thunkCreateReview, thunkGetReviews } from "../../store/reviews";
 import { thunkGetSpotDetails } from "../../store/spots";
-import './ReviewModal.css';
+import './CreateReviewModal.css';
 
 export default function CreateReviewModal ({ spotId }) {
     const dispatch = useDispatch();
@@ -15,6 +15,7 @@ export default function CreateReviewModal ({ spotId }) {
     const { closeModal } = useModal();
 
     const user = useSelector(state => state.session.user);
+    const spot = useSelector(state => state?.spots?.singleSpot);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,47 +35,39 @@ export default function CreateReviewModal ({ spotId }) {
                 }
             )
 
-            dispatch(thunkGetReviews());
+            // dispatch(thunkGetReviews(spot.id));
+            dispatch(thunkGetSpotDetails(spot.id));
     }
 
     return (
-        <div>
-            <form
-                className='review-form'
-                onSubmit={handleSubmit}
-            >
-                <h1>Create Review</h1>
-                <ul>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <label id='review-input-label'>
-                    Review:
-                    <br />
+        <form className='review-form' onSubmit={handleSubmit}>
+            <div className="review-form-errors">
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </div>
+            <div className="review-form-elements">
+                <div className="review-body">
                     <textarea
+                        placeholder="Your review"
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
                     />
-                </label>
-                <label id='stars-input-label'>
-                    Stars:
-                    &nbsp;
+                </div>
+                <div className="review-rating">
                     <select
                         name='stars'
                         value={stars}
                         onChange={(e) => setStars(e.target.value)}
                     >
-                        <option>0</option>
+                        <option selected>Your rating...</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
                     </select>
-                </label>
-                <br />
+                </div>
                 <button onSubmit={handleSubmit}>Submit</button>
-                <br />
-            </form>
-        </div>
+            </div>
+        </form>
     )
 }

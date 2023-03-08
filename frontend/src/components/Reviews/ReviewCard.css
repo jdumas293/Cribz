@@ -1,8 +1,9 @@
 .review-display {
     display: flex;
-    margin-left: 200px;
+    justify-content: space-between;
     width: 100%;
-    gap: 2em;
+    padding-top: 2em;
+    border-top: 1px solid lightgrey;
     /* border: 1px solid black; */
 }
 
@@ -10,41 +11,37 @@
     display: flex;
     margin-left: 200px;
     margin-right: 200px;
-    /* width: 100%; */
-    /* border: 1px solid red; */
 }
 
 .reviewCard-list {
     display: flex;
     flex-direction: column;
-    padding: 1em;
+    padding-left: 1em;
+    padding-bottom: 2em;
     /* border: 1px solid black; */
 }
 
 .review-details {
     display: flex;
     flex-direction: column;
-    /* width: 50%; */
-    /* padding: 1em; */
     /* border: 1px solid black; */
 }
 
 .review-header {
     text-decoration: underline;
     font-size: 16px;
-    padding-bottom: 1em;
     /* border: 1px solid black */
 }
 
 
-.delete-review-btn button {
+.delete-review-icon button {
     width: fit-content;
     border: none;
     background-color: white;
     cursor: pointer;
 }
 
-.edit-review-btn button {
+.edit-review-icon button {
     width: fit-content;
     border: none;
     background-color: white;
@@ -52,25 +49,34 @@
 }
 
 .review-owner {
-    font-size: 12px;
+    font-size: 14px;
     /* border: 1px solid black; */
 }
 
 .review-body {
-    font-size: 12px;
+    font-size: 13px;
     padding-left: 5px;
     /* border: 1px solid black; */
 }
 
 .review-container {
     display: flex;
-    border-bottom: 1px solid lightgrey;
-    margin-bottom: 1em;
+    padding-bottom: 1em;
+    padding-top: 1em;
     width: 1080px;
-    gap: 2em;
-    /* font-family: 'Titillium Web', sans-serif; */
+    gap: 1em;
+    border-bottom: 1px solid lightgrey;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
     /* border: 1px solid black; */
+}
+
+.review-profile-image {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    padding: 0.5em;
+    border: 2px solid black;
+    border-radius: 20px;
 }
 
 .review-btns-container {

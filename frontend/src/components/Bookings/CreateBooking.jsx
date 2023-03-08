@@ -14,7 +14,7 @@ const CreateBooking = () => {
 
     const spot = useSelector(state => state.spots.singleSpot);
     const user = useSelector(state => state.session.user);
-    console.log("SPOT ===>", spot);
+    // console.log("SPOT ===>", spot);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,7 +28,7 @@ const CreateBooking = () => {
 
         // console.log("NEW BOOKING ===>", newBooking);
 
-        dispatch(thunkCreateBooking(spot.id, newBooking))
+        return dispatch(thunkCreateBooking(spot.id, newBooking))
             .catch(
                 async(res) => {
                     const data = await res.json();
@@ -41,9 +41,9 @@ const CreateBooking = () => {
     return (
         <div>
             <form className="booking-form" onSubmit={handleSubmit}>
-                {/* <ul>
+                {/* <div className="booking-form-errors">
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul> */}
+                </div> */}
                 <div className="booking-text-container">
                     <div className="booking-form-info-container">
                         <div className="booking-price">
@@ -54,7 +54,7 @@ const CreateBooking = () => {
                         </div>
                     </div>
                 </div>
-                <div className="booking-form-details-container">
+                <div className="booking-form-elements">
                     <div className="start-date-container">
                         <label>
                             Check-In:

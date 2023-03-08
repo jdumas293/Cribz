@@ -18,12 +18,13 @@
 .spot-details-name {
     display: flex;
     font-size: 30px;
+    font-weight: 600;
     /* border: 1px solid black; */
 }
 
 .spot-details-rating {
     display: flex;
-    font-size: 15px;
+    font-size: 16px;
     /* border: 1px solid black; */
 }
 
@@ -137,13 +138,17 @@
     display: flex;
     flex-direction: column;
     margin-top: 2em;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
     border-bottom: 1px solid lightgrey;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
     /* border: 1px solid black; */
 }
 
 #spot-description-container {
+    display: flex;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid lightgrey;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
     /* border: 1px solid red; */
 }
@@ -190,6 +195,7 @@
 .create-delete-review-container button {
     /* width: 100px; */
     height: 35px;
+    width: 100px;
     background-color: rgb(230, 30, 77);
     border-color: rgb(230, 30, 77);
     border-radius: 5px;
@@ -207,16 +213,16 @@
     margin-top: 2em;
     margin-bottom: 2em;
     width: 50%;
-    /* font-family: 'Titillium Web', sans-serif; */
     font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
     /* border: 1px solid black; */
 }
 
 .details-booking-container {
-    width: 50%;
-    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     margin-left: 200px;
-    border-bottom: 1px solid lightgrey;
+    /* border: 1px solid red; */
 }
 
 .bottomhalf-container {
@@ -229,10 +235,20 @@
 
 .spot-owner-details {
     display: flex;
-    gap: 1em;
+    gap: 0.5em;
     /* border: 1px solid red; */
 }
 
 .middle-container {
     display: flex;
+}
+
+.aircover-logo {
+    padding-top: 2em;
+    height: 26px;
+}
+
+.hosted-by {
+    font-size: 22px;
+    font-weight: 600;
 }

@@ -10,7 +10,7 @@ import ReviewCard from '../Reviews/ReviewCard';
 import CreateReviewModal from '../Reviews/CreateReviewModal';
 import CreateBooking from '../Bookings/CreateBooking';
 import './SpotDetails.css';
-import '../Reviews/ReviewDetails.css';
+import '../Reviews/ReviewCard.css';
 
 export default function SpotDetails () {
     const dispatch = useDispatch();
@@ -61,7 +61,8 @@ export default function SpotDetails () {
                         {spot.name}
                     </div>
                     <div className='spot-details-rating'>
-                        ★{isNumber(spot.avgStarRating)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}
+                        <i class="fa-solid fa-star"></i>&nbsp;
+                        {isNumber(spot.avgStarRating)} · {spot.numReviews} reviews · {spot.city}, {spot.state}, {spot.country}
                     </div>
                 </div>
                 <div className='update-delete-spot-container'>
@@ -91,6 +92,10 @@ export default function SpotDetails () {
                     <div id='spot-description-container'>
                         <p>{spot.description}</p>
                     </div>
+                    <div className='additional-spot-details'>
+                        <img className="aircover-logo" src='https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg'></img>
+                        <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
+                    </div>
                 </div>
                 <div className='booking-container'>
                     <CreateBooking />
@@ -103,7 +108,7 @@ export default function SpotDetails () {
                     </div>
                     <div className='create-delete-review-container'>
                         <OpenModalButton
-                            buttonText="Create Review"
+                            buttonText="New Review"
                             modalComponent={<CreateReviewModal spotId={spot.id}/>}
                         />
                     </div>

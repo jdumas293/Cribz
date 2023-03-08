@@ -51,85 +51,67 @@ export default function UpdateSpotModal ({ spot }) {
 
     return (
         <div>
-            <form
-                className="update-form"
-                onSubmit={handleUpdate}
-                >
-                <h1>Edit Spot</h1>
-                <ul>
+            <form className="edit-spot-form" onSubmit={handleUpdate}>
+                <div className="edit-spot-errors">
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <label>
-                    Address:
-                    <br />
-                    <input
-                        type='text'
-                        name='address'
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                    />
-                </label>
-                <label>
-                    City:
-                    <br />
-                    <input
-                        type='text'
-                        name='city'
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                    />
-                </label>
-                <label>
-                    State:
-                    <br />
-                    <input
-                        type='text'
-                        name='state'
-                        value={state}
-                        onChange={(e) => setState(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Country:
-                    <br />
-                    <input
-                        type='text'
-                        name='country'
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Name:
-                    <br />
-                    <input
-                        type='text'
-                        name='name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Description:
-                    <br />
-                    <textarea
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Price:
-                    <br />
-                    <input
-                        type='number'
-                        name='price'
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                    />
-                </label>
-                <br />
-                <button onSubmit={handleUpdate}>Submit</button>
-                <br />
+                </div>
+                <div className="edit-spot-form-elements">
+                    <div className="edit-spot-address">
+                        <input
+                            type='text'
+                            name='address'
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
+                    </div>
+                    <div className="edit-spot-city">
+                        <input
+                            type='text'
+                            name='city'
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                    </div>
+                    <div className="edit-spot-state">
+                        <input
+                            type='text'
+                            name='state'
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                        />
+                    </div>
+                    <div className="edit-spot-country">
+                        <input
+                            type='text'
+                            name='country'
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                        />
+                    </div>
+                    <div className="edit-spot-name">
+                        <input
+                            type='text'
+                            name='name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div className="edit-spot-description">
+                        <textarea
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        />
+                    </div>
+                    <div className="edit-spot-price">
+                        <input
+                            type='number'
+                            name='price'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
+                    </div>
+                    <button onSubmit={handleUpdate}>Edit</button>
+                </div>
             </form>
         </div>
     )
