@@ -2,9 +2,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 10px;
+    margin-top: 6em;
+    margin-bottom: 2em;
     /* border: 1px solid black; */
 }
 
@@ -19,7 +18,13 @@
 .container {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    /* transition: transform 0.3s ease-in-out; */
     /* border: 1px solid black; */
+}
+
+.container:hover {
+    transform: scale(1.04);
 }
 
 .image-container img {
@@ -32,6 +37,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     object-fit: cover;
+    /* cursor: pointer; */
     /* border: 1px solid black; */
 }
 

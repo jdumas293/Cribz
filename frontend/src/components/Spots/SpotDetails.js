@@ -29,7 +29,7 @@ export default function SpotDetails () {
     const showDeleteSpotBtn = () => {
         if (currUserId === spot.ownerId) {
             return <OpenModalButton
-                buttonText="Delete Spot"
+                buttonText="Delete"
                 modalComponent={<DeleteSpotModal spotId={spot.id} />}
             />
         }
@@ -39,7 +39,7 @@ export default function SpotDetails () {
     const showEditSpotBtn = () => {
         if (currUserId === spot.ownerId) {
             return <OpenModalButton
-                buttonText="Edit Spot"
+                buttonText="Edit"
                 modalComponent={<UpdateSpotModal spot={spot} />}
             />
         }
@@ -78,6 +78,24 @@ export default function SpotDetails () {
                 <div id='main-image-container'>
                     <img src={spot.SpotImages && spot.SpotImages[0].url} alt={spot.name}/>
                 </div>
+                <div className='other-img-container'>
+                    <div className='top-img-container'>
+                        <div className='top-left-img'>
+                            <img src='https://ecowellness.com/wp-content/uploads/2017/04/property.jpg' />
+                        </div>
+                        <div className='top-right-img'>
+                            <img src='https://ecowellness.com/wp-content/uploads/2017/04/property.jpg' />
+                        </div>
+                    </div>
+                    <div className='bottom-img-container'>
+                        <div className='bottom-left-img'>
+                            <img src='https://ecowellness.com/wp-content/uploads/2017/04/property.jpg' />
+                        </div>
+                        <div className='bottom-right-img'>
+                            <img src='https://ecowellness.com/wp-content/uploads/2017/04/property.jpg' />
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className='middle-container'>
                 <div className='details-booking-container'>
@@ -90,7 +108,7 @@ export default function SpotDetails () {
                         </div>
                     </div>
                     <div id='spot-description-container'>
-                        <p>{spot.description}</p>
+                        <p className='spot-description-text'>{spot.description}</p>
                     </div>
                     <div className='additional-spot-details'>
                         <img className="aircover-logo" src='https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg'></img>

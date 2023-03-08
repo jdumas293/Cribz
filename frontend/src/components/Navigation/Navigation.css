@@ -14,12 +14,16 @@
     font-family: 'Titillium Web', sans-serif;
 }
 
-.nav-container {
+.nav-background-container {
     display: flex;
-    flex-direction: row;
-    height: 50px;
-    /* background-color: whitesmoke; */
-    border-bottom: 1px solid black;
+    position: fixed;
+    align-items: center;
+    left: 0;
+    top: 0;
+    height: 5em;
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    background-color: white;
 }
 
 .nav-elements-container {

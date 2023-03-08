@@ -11,7 +11,7 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <div className='nav-container'>
+    <div className='nav-background-container'>
       <div className='nav-elements-container'>
         <div className='home-btn'>
           <NavLink exact to="/"><img id='logo-img' src={logo} alt='Cribz' /></NavLink>

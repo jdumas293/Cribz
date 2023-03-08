@@ -1,0 +1,40 @@
+.delete-booking-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.delete-booking-message {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.delete-booking-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.inner-delete-booking-btn {
+    align-self: center;
+    width: 70px;
+    color: white;
+    border-color: rgba(230, 30, 77);
+    border-radius: 10px;
+    background-color: rgb(230, 30, 77);
+    padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+    cursor: pointer;
+}
+
+.cancel-delete-booking-btn {
+    align-self: center;
+    width: 70px;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: white;
+    cursor: pointer;
+}

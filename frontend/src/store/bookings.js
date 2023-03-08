@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_BOOKINGS = 'bookings/loadBookings';
 const CREATE_BOOKING = 'bookings/createBooking';
-const UPDATE_BOOKING = 'bookings/updateBooking';
+const EDIT_BOOKING = 'bookings/updateBooking';
 const DELETE_BOOKING = 'booking/deleteBooking';
 
 // ACTION CREATORS
@@ -17,6 +17,20 @@ export const createBooking = (booking) => {
     return {
         type: CREATE_BOOKING,
         payload: booking
+    };
+};
+
+export const editBooking = (booking) => {
+    return {
+        type: EDIT_BOOKING,
+        payload: booking
+    };
+};
+
+export const deleteBooking = (bookingId) => {
+    return {
+        type: DELETE_BOOKING,
+        payload: bookingId
     };
 };
 
@@ -49,6 +63,34 @@ export const thunkCreateBooking = (spotId, booking) => async (dispatch) => {
     }
 };
 
+export const thunkEditBooking = (booking) => async (dispatch) => {
+    const response = await csrfFetch(`/api/bookings/${booking.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(booking)
+    });
+
+    if (response.ok) {
+        const editedBooking = await response.json();
+        dispatch(editBooking(editedBooking));
+        return editedBooking;
+    };
+};
+
+export const thunkDeleteBooking = (bookingId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        const booking = await response.json();
+        dispatch(deleteBooking(bookingId));
+        return booking;
+    };
+};
+
 
 // REDUCER
 const initialState = { allBookings: {}, singleBooking: {} };
@@ -66,6 +108,16 @@ const bookingsReducer = (state = initialState, action) => {
         case CREATE_BOOKING: {
             newState = { ...state, allBookings: {...state.allBookings}, singleBooking: {...state.singleBooking} };
             newState.singleBooking = action.payload;
+            return newState;
+        }
+        case EDIT_BOOKING: {
+            newState = { ...state, allBookings: {...state.allBookings}, singleBooking: {...state.singleBooking} };
+            newState.singleSpot = {...state.singleSpot, ...action.payload};
+            return newState;
+        }
+        case DELETE_BOOKING: {
+            newState = { ...state, allBookings: {...state.allBookings}, singleBooking: {...state.singleBooking} };
+            delete newState.allBookings[action.payload];
             return newState;
         }
         default:

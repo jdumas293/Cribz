@@ -19,6 +19,34 @@
     /* border: 1px solid black; */
 }
 
+.profile-booking-btn-container {
+    display: flex;
+    gap: 1em;
+    padding-top: 1em;
+}
+
+.profile-booking-btn-container button {
+    color: white;
+    width: 25%;
+    background-color: rgb(230, 30, 77);
+    border-color: rgb(230, 30, 77);
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+    cursor: pointer;
+}
+
+.delete-booking-btn {
+    color: white;
+    width: 25%;
+    background-color: rgb(230, 30, 77);
+    border-color: rgb(230, 30, 77);
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+    cursor: pointer;
+}
+
 .profile-booking-image-container {
     width: 500px;
     object-fit: cover;
