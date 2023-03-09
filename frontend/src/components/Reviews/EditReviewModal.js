@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { thunkEditReview } from "../../store/reviews";
+import { thunkEditReview, thunkGetReviews } from "../../store/reviews";
+import { thunkGetSpotDetails } from "../../store/spots";
 import "./EditReviewModal.css";
 
 
@@ -24,7 +25,7 @@ export default function EditReviewModal({ prevReview, spotId }) {
             stars
         };
 
-        dispatch(thunkEditReview(editReview))
+        await dispatch(thunkEditReview(editReview))
             .then(closeModal)
             .catch(
                 async(res) => {
@@ -32,46 +33,43 @@ export default function EditReviewModal({ prevReview, spotId }) {
                     if (data && data.errors) setErrors(data.errors);
                 }
             );
-        history.push(`/spots/${spotId}`);
+        // history.push(`/spots/${spotId}`);
+        // await dispatch(thunkGetReviews(spotId));
+        dispatch(thunkGetSpotDetails(spotId));
     }
 
     return (
         <div>
             <form
-                className='review-form'
+                className='edit-review-form'
                 onSubmit={handleEdit}
             >
-                <h1>Edit Review</h1>
-                <ul>
+                <div className="edit-review-form-errors">
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <label id='review-input-label'>
-                    Review:
-                    <br />
-                    <textarea
-                        value={review}
-                        onChange={(e) => setReview(e.target.value)}
-                    />
-                </label>
-                <label id='stars-input-label'>
-                    Stars:
-                    &nbsp;
-                    <select
-                        name='stars'
-                        value={stars}
-                        onChange={(e) => setStars(e.target.value)}
-                    >
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </label>
-                <br />
-                <button onSubmit={handleEdit}>Submit</button>
-                <br />
+                </div>
+                <div className="edit-review-form-elements">
+                    <div className="edit-review-form-body">
+                        <textarea
+                            placeholder="Your review"
+                            value={review}
+                            onChange={(e) => setReview(e.target.value)}
+                        />
+                    </div>
+                    <div className="edit-review-form-stars">
+                        <select
+                            name='stars'
+                            value={stars}
+                            onChange={(e) => setStars(e.target.value)}
+                        >
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button onSubmit={handleEdit}>Submit</button>
+                </div>
             </form>
         </div>
     )

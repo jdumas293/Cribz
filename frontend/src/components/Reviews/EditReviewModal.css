@@ -1,0 +1,53 @@
+.edit-review-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 25px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.edit-review-form-errors {
+    list-style-type: none;
+    font-size: 12px;
+    padding-bottom: 1em;
+    color: red;
+}
+
+.edit-review-form-elements {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.edit-review-form-body {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-review-form textarea {
+    width: 250px;
+    height: 4em;
+}
+
+.edit-review-form-stars {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-review-form-stars select {
+    width: 250px;
+    height: 2em;
+    /* text-align: center; */
+}
+
+.edit-review-form button {
+    align-self: center;
+    width: 100%;
+    color: white;
+    border-color: rgb(230, 30, 77);
+    border-radius: 10px;
+    background-color: rgb(230, 30, 77);
+    padding: 5px;
+    font-family: 'Titillium Web', sans-serif;
+    cursor: pointer;
+}

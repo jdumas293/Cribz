@@ -1,0 +1,29 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+    /* position: fixed; */
+    width: 500px;
+    height: 3em;
+    /* border: 1px solid black; */
+}
+
+.search-inner {
+    display: flex;
+    cursor: pointer;
+}
+
+.search-inner input {
+    width: 500px;
+    height: 1.5em;
+}
+
+.dropdown {
+    background-color: whitesmoke;
+    padding: 10px;
+    border: 1px solid lightgrey;
+}
+
+.dropdown-row {
+    cursor: pointer;
+    /* border: 1px solid red; */
+}

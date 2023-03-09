@@ -34,8 +34,6 @@ export default function CreateReviewModal ({ spotId }) {
                     if (data && data.errors) setErrors(data.errors);
                 }
             )
-
-            // dispatch(thunkGetReviews(spot.id));
             dispatch(thunkGetSpotDetails(spot.id));
     }
 

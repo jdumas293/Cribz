@@ -4,11 +4,13 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import SpotFormModal from '../Spots/SpotFormModal';
 import OpenModalButton from '../OpenModalButton';
-import './Navigation.css';
 import logo from '../../assets/logo-no-background.png';
+import SearchFilter from '../SearchFilter/SearchFilter';
+import './Navigation.css';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  // const spots = Object.values(useSelector(state => state?.spots?.allSpots));
 
   return (
     <div className='nav-background-container'>
@@ -16,6 +18,9 @@ function Navigation({ isLoaded }){
         <div className='home-btn'>
           <NavLink exact to="/"><img id='logo-img' src={logo} alt='Cribz' /></NavLink>
         </div>
+        {/* <div className='nav-search-filter'>
+          <SearchFilter />
+        </div> */}
         <div className='other-nav'>
           <div className='list-spot-btn'>
             <OpenModalButton
