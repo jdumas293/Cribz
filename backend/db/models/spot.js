@@ -19,7 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: {
+          msg: "Address must be less than 100 characters.",
+          arg: [1, 100]
+        }
+      }
     },
     city: {
       type: DataTypes.STRING,

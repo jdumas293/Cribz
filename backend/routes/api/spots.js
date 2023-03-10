@@ -11,16 +11,20 @@ const router = express.Router();
 const validateSpot = [
     check('address')
         .exists({ checkFalsy: true })
-        .withMessage('Street address is required'),
+        .isLength({ max: 50 })
+        .withMessage('Street address must be less than 50 characters'),
     check('city')
         .exists({ checkFalsy: true })
-        .withMessage('City is required'),
+        .isLength({ max: 50 })
+        .withMessage('City must be less than 50 characters'),
     check('state')
         .exists({ checkFalsy: true })
-        .withMessage('State is required'),
+        .isLength({ max: 50 })
+        .withMessage('State must be less than 50 characters'),
     check('country')
         .exists({ checkFalsy: true })
-        .withMessage('Country is required'),
+        .isLength({ max: 50 })
+        .withMessage('Country must be less than 50 characters'),
     check('lat')
         .exists({ checkFalsy: true })
         .isFloat({ min: -90, max: 90})
@@ -31,14 +35,16 @@ const validateSpot = [
         .withMessage('Longitude is not valid'),
     check('name')
         .exists({ checkFalsy: true })
-        .isLength( { max: 50 })
+        .isLength({ max: 50 })
         .withMessage('Name must be less than 50 characters'),
     check('description')
         .exists({ checkFalsy: true })
-        .withMessage('Description is required'),
+        .isLength({ max: 140 })
+        .withMessage('Description must be less than 140 characters'),
     check('price')
         .exists({ checkFalsy: true })
-        .withMessage('Price per day is required'),
+        .isFloat({ min: 1, max: 50000})
+        .withMessage('Price cannot exceed $50,000'),
     handleValidationErrors
 ];
 
@@ -46,7 +52,8 @@ const validateSpot = [
 const validateReview = [
     check('review')
         .exists({ checkFalsy: true })
-        .withMessage('Review text is required'),
+        .isLength({ max: 140 })
+        .withMessage('Review must be less than 140 characters'),
     check('stars')
         .exists({ checkFalsy: true })
         .isFloat({ min: 1, max: 5 })

@@ -16,7 +16,7 @@ const CreateBooking = () => {
     const user = useSelector(state => state.session.user);
     // console.log("SPOT ===>", spot);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
 
@@ -28,11 +28,14 @@ const CreateBooking = () => {
 
         // console.log("NEW BOOKING ===>", newBooking);
 
-        return dispatch(thunkCreateBooking(spot.id, newBooking))
+        await dispatch(thunkCreateBooking(spot.id, newBooking))
+            .then(history.push(`/dashboard/${user.id}`))
             .catch(
                 async(res) => {
                     const data = await res.json();
+                    // console.log("DATA", data);
                     if (data && data.errors) setErrors(data.errors);
+                    // console.log("ERRORS", errors);
                 }
             )
     }

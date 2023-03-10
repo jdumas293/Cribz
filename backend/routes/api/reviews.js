@@ -12,7 +12,8 @@ const router = express.Router();
 const validateReview = [
     check('review')
         .exists({ checkFalsy: true })
-        .withMessage('Review text is required'),
+        .isLength({ max: 140 })
+        .withMessage('Review must be less than 140 characters'),
     check('stars')
         .exists({ checkFalsy: true })
         .isFloat({ min: 1, max: 5 })

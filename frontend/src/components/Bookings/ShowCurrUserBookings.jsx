@@ -8,7 +8,7 @@ const ShowCurrUserBookings = () => {
     const dispatch = useDispatch();
     const bookings = Object.values(useSelector(state => state.bookings.allBookings));
 
-    console.log("BOOKINGS ===>", bookings);
+    // console.log("BOOKINGS ===>", bookings);
 
     useEffect(() => {
         dispatch(thunkGetCurrUserBookings());
