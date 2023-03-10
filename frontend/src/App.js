@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import SpotsIndex from './components/Spots';
-import SpotDetails from './components/Spots/SpotDetails';
+import SingleSpotPage from './components/Spots/SingleSpotPage';
 import UserDash from './components/UserDash/UserDash';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
             <SpotsIndex />
           </Route>
           <Route exact path='/spots/:spotId'>
-            <SpotDetails />
+            <SingleSpotPage />
           </Route>
           <Route exact path='/dashboard/:userId'>
             <UserDash />

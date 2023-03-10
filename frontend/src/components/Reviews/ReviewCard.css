@@ -55,7 +55,7 @@
 
 .review-body {
     font-size: 13px;
-    padding-left: 5px;
+    width: fit-content;
     /* border: 1px solid black; */
 }
 

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { thunkUpdateSpot } from "../../store/spots";
-import './UpdateSpot.css';
+import './EditSpotModal.css';
 
 export default function UpdateSpotModal ({ spot }) {
     const dispatch = useDispatch();

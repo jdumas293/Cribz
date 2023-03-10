@@ -3,7 +3,7 @@ import { thunkCreateSpot } from "../../store/spots";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import './SpotForm.css';
+import './CreateSpotModal.css';
 
 export default function SpotFormModal () {
     const dispatch = useDispatch();

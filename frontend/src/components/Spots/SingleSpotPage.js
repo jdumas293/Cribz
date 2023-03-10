@@ -5,11 +5,11 @@ import { thunkGetSpotDetails } from '../../store/spots';
 import { thunkGetReviews } from '../../store/reviews';
 import OpenModalButton from '../OpenModalButton';
 import DeleteSpotModal from './DeleteSpotModal';
-import UpdateSpotModal from './UpdateSpotModal';
+import EditSpotModal from './EditSpotModal';
 import ReviewCard from '../Reviews/ReviewCard';
 import CreateReviewModal from '../Reviews/CreateReviewModal';
 import CreateBooking from '../Bookings/CreateBooking';
-import './SpotDetails.css';
+import './SingleSpotPage.css';
 import '../Reviews/ReviewCard.css';
 
 export default function SpotDetails () {
@@ -40,7 +40,7 @@ export default function SpotDetails () {
         if (currUserId === spot.ownerId) {
             return <OpenModalButton
                 buttonText="Edit"
-                modalComponent={<UpdateSpotModal spot={spot} />}
+                modalComponent={<EditSpotModal spot={spot} />}
             />
         }
     }

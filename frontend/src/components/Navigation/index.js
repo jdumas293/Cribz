@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import SpotFormModal from '../Spots/SpotFormModal';
+import CreateSpotModal from '../Spots/CreateSpotModal';
 import OpenModalButton from '../OpenModalButton';
 import logo from '../../assets/logo-no-background.png';
 import SearchFilter from '../SearchFilter/SearchFilter';
@@ -26,7 +26,7 @@ function Navigation({ isLoaded }){
             <OpenModalButton
               buttonText="List Spot"
               // onButtonClick={closeMenu}
-              modalComponent={<SpotFormModal />}
+              modalComponent={<CreateSpotModal />}
             />
           </div>
           <div className='profile-btn'>
