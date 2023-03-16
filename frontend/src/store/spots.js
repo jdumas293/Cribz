@@ -75,17 +75,26 @@ export const thunkCreateSpot = (spot, url, user) => async (dispatch) => {
 
     if (response.ok) {
         const newSpot = await response.json();
+
+        // console.log("SPOT", spot);
+        // console.log("URL", url);
+
+        const formData = new FormData();
+        formData.append("image", url);
+        formData.append("preview", true)
         
         const imageRes = await csrfFetch(`/api/spots/${newSpot.id}/images`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data'
             },
-            body: JSON.stringify({ url, preview: true })
+            body: formData
         });
+
         if (imageRes.ok) {
             newSpot.Owner = user;
-            newSpot.SpotImages = [{url, preview: true}]
+            newSpot.SpotImages = [{imageRes, preview: true}]
+            console.log(newSpot);
             dispatch(createSpot(newSpot));
             return newSpot;
         }

@@ -40,13 +40,18 @@ export default function SpotFormModal () {
         dispatch(thunkCreateSpot(newSpot, previewImage, currentUser))
             .then((spot) => history.push(`/spots/${spot.id}`))
             .then(closeModal)
-            .catch(
-                async(res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                }
-            )
+            // .catch(
+            //     async(res) => {
+            //         const data = await res.json();
+            //         if (data && data.errors) setErrors(data.errors);
+            //     }
+            // )
     }
+
+    const updateImage = (e) => {
+        const image = e.target.files[0];
+        if (image) setPreviewImage(image);
+    };
 
     return (
         <div>
@@ -125,11 +130,9 @@ export default function SpotFormModal () {
                     </div>
                     <div className="upload-spot-image">
                         <input
-                            placeholder="Your image"
-                            type='url'
-                            name='previewImage'
-                            value={previewImage}
-                            onChange={(e) => setPreviewImage(e.target.value)}
+                            type='file'
+                            name="image"
+                            onChange={updateImage}
                             required
                         />
                     </div>

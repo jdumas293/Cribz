@@ -16,6 +16,7 @@ const app = express(); // Initialize Express
 
 app.use(morgan('dev')); // for logging information about requests and responses
 app.use(cookieParser()); // for parsing cookies
+app.use(express.urlencoded({ extended: false })); // AWS S3
 app.use(express.json()); // for parsing JSON bodies of requests
 
 

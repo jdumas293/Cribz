@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import SpotsIndex from './components/Spots';
 import SingleSpotPage from './components/Spots/SingleSpotPage';
 import UserDash from './components/UserDash/UserDash';
+import ShowCurrUserBookings from './components/Bookings/ShowCurrUserBookings';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,8 +27,14 @@ function App() {
           <Route exact path='/spots/:spotId'>
             <SingleSpotPage />
           </Route>
-          <Route exact path='/dashboard/:userId'>
+          <Route path='/dashboard/:userId'>
             <UserDash />
+          </Route>
+          <Route path='/bookings/:userId'>
+            <UserDash tabOverride={"ShowCurrUserBookings"} />
+          </Route>
+          <Route path='/favorites/:userId'>
+            <UserDash tabOverride={"FavoritesTab"} />
           </Route>
         </Switch>
       )}

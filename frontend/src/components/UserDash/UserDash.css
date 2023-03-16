@@ -33,3 +33,30 @@
 .profile-num-bookings {
     font-size: 15px;
 }
+
+
+/* PROFILE TAB NAV */
+.profile-tab-container {
+    display: flex;
+    gap: 2em;
+    padding: 1em;
+    border-bottom: 1px solid lightgrey;
+}
+
+.profile-bookings-tab {
+    cursor: pointer;
+}
+
+.profile-bookings-tab:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.profile-favorites-tab {
+    cursor: pointer;
+}
+
+.profile-favorites-tab:hover {
+    cursor: pointer;
+    color: red;
+}

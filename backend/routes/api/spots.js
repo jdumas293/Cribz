@@ -1,9 +1,9 @@
 const express = require('express');
-
 const { Spot, SpotImage, Review, User, ReviewImage, Booking } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 const router = express.Router();
 
@@ -260,7 +260,7 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
 
 
 // Add an image to a spot
-router.post('/:spotId/images', requireAuth, async (req, res) => {
+router.post('/:spotId/images', singleMulterUpload("image"), requireAuth, async (req, res) => {
     const { url, preview } = req.body;
     // query for spot to add image
     const spot = await Spot.findOne({
@@ -282,9 +282,13 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 
     // spot must belong to current user
     if (spot.ownerId === req.user.id) {
+
+        // AWS S3 UPLOAD
+        const imageUrl = await singlePublicFileUpload(req.file);
+
         await SpotImage.create({
             spotId: req.params.spotId,
-            url: url,
+            url: imageUrl,
             preview: preview
         });
     } else {
@@ -298,7 +302,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     // query for new spot image
     const newSpotImage = await SpotImage.findOne({
         where: {
-            url: url
+            spotId: req.params.spotId
         },
         attributes: ['id', 'url', 'preview']
     })

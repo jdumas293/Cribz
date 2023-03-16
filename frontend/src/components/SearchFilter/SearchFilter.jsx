@@ -27,6 +27,7 @@ const SearchFilter = () => {
             <div className="search-inner">
                 <input
                     type="text"
+                    placeholder="Search by city..."
                     value={value}
                     onChange={onChange}
                 />
@@ -35,12 +36,13 @@ const SearchFilter = () => {
             <div className="dropdown">
                 {spots.filter(spot => {
                     const searchTerm = value.toLowerCase();
-                    const name = spot.name.toLowerCase();
+                    // const name = spot.name.toLowerCase();
+                    const city = spot.city.toLowerCase();
 
-                    return searchTerm && name.startsWith(searchTerm) && name !== searchTerm;
+                    return searchTerm && city.startsWith(searchTerm) && city !== searchTerm;
                 })
-                .map((spot) => <div onClick={() => onSearch(spot.name)} className="dropdown-row">
-                    {spot.name}    
+                .map((spot) => <div onClick={() => onSearch(spot.city)} className="dropdown-row">
+                    {spot.city}    
                 </div>)}
             </div>
         </div>
