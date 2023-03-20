@@ -24,7 +24,7 @@
     width: 100%;
     border-bottom: 1px solid lightgrey;
     background-color: whitesmoke;
-    z-index: auto;
+    z-index: 9999999;
 }
 
 .nav-elements-container {

@@ -9,6 +9,7 @@ import EditSpotModal from './EditSpotModal';
 import ReviewCard from '../Reviews/ReviewCard';
 import CreateReviewModal from '../Reviews/CreateReviewModal';
 import CreateBooking from '../Bookings/CreateBooking';
+import FavoriteButton from '../Favorites/FavoriteButton';
 import './SingleSpotPage.css';
 import '../Reviews/ReviewCard.css';
 
@@ -71,6 +72,9 @@ export default function SpotDetails () {
                     </div>
                     <div id='edit-spot-btn-container'>
                         { showEditSpotBtn() }
+                    </div>
+                    <div>
+                        <FavoriteButton />
                     </div>
                 </div>
             </div>
