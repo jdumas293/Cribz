@@ -1,0 +1,32 @@
+.profile-likes-container {
+    display: flex;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    gap: 2em;
+    font-family: 'Titillium Web', sans-serif;
+    border-bottom: 1px solid lightgrey;
+    /* border: 1px solid black; */
+}
+
+.profile-likes-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    /* align-items: center; */
+    /* border: 1px solid black; */
+}
+
+.profile-likes-img-container {
+    width: 500px;
+    object-fit: cover;
+    margin-bottom: 2em;
+}
+
+.profile-likes-img-container img {
+    width: 500px;
+    border-radius: 20px;
+    object-fit: cover;
+}

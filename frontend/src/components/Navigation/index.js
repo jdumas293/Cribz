@@ -18,9 +18,9 @@ function Navigation({ isLoaded }){
         <div className='home-btn'>
           <NavLink exact to="/"><img id='logo-img' src={logo} alt='Cribz' /></NavLink>
         </div>
-        <div className='nav-search-filter'>
+        {/* <div className='nav-search-filter'>
           <SearchFilter />
-        </div>
+        </div> */}
         <div className='other-nav'>
           <div className='list-spot-btn'>
             <OpenModalButton

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { thunkGetCurrUserBookings } from "../../store/bookings";
 import ShowCurrUserBookings from "../Bookings/ShowCurrUserBookings";
-import FavoritesTab from "../Favorites/FavoritesTab";
+import LikesTab from "../Likes/LikesTab";
 import "./UserDash.css";
 
 const UserDash = ({ tabOverride }) => {
@@ -25,8 +25,8 @@ const UserDash = ({ tabOverride }) => {
             history.push(`/bookings/${user.id}`);
         };
 
-        if (selectedTab === 'FavoritesTab') {
-            history.push(`/favorites/${user.id}`)
+        if (selectedTab === 'LikesTab') {
+            history.push(`/likes/${user.id}`)
         }
 
         dispatch(thunkGetCurrUserBookings(user.id));
@@ -51,15 +51,15 @@ const UserDash = ({ tabOverride }) => {
                     Bookings
                 </div>
                 <div
-                    className={`profile-favorites-tab ${selectedTab === 'FavoritesTab' ? 'selected' : ''}`}
-                    onClick={() => handleTabClick('FavoritesTab')}
+                    className={`profile-likes-tab ${selectedTab === 'LikesTab' ? 'selected' : ''}`}
+                    onClick={() => handleTabClick('LikesTab')}
                 >
-                    Favorites
+                    Likes
                 </div>
             </div>
             <div>
                 {selectedTab === 'ShowCurrUserBookings' && <ShowCurrUserBookings />}
-                {selectedTab === 'FavoritesTab' && <FavoritesTab />}
+                {selectedTab === 'LikesTab' && <LikesTab />}
             </div>
         </div>
     )

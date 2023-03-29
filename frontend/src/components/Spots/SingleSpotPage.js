@@ -9,9 +9,11 @@ import EditSpotModal from './EditSpotModal';
 import ReviewCard from '../Reviews/ReviewCard';
 import CreateReviewModal from '../Reviews/CreateReviewModal';
 import CreateBooking from '../Bookings/CreateBooking';
-import FavoriteButton from '../Favorites/FavoriteButton';
+import LikeButton from '../Likes/LikeButton';
 import './SingleSpotPage.css';
 import '../Reviews/ReviewCard.css';
+import { thunkGetLikes } from '../../store/likes';
+
 
 export default function SpotDetails () {
     const dispatch = useDispatch();
@@ -20,6 +22,7 @@ export default function SpotDetails () {
     const spot = useSelector(state => state.spots.singleSpot);
     const reviews = Object.values(useSelector(state => state.reviews.allReviews));
     const currUserId = useSelector(state => state.session?.user?.id);
+    const likeId = useSelector(state => state.likes?.singleLike?.id);
 
     const isNumber = (num) => {
         if (isNaN(num)) return 'n/a';
@@ -54,6 +57,10 @@ export default function SpotDetails () {
         dispatch(thunkGetReviews(spotId));
     }, [dispatch, spotId]);
 
+    useEffect(() => {
+        dispatch(thunkGetLikes());
+    }, [dispatch])
+
     return (
         <>
             <div className='spot-details-container'>
@@ -73,8 +80,8 @@ export default function SpotDetails () {
                     <div id='edit-spot-btn-container'>
                         { showEditSpotBtn() }
                     </div>
-                    <div>
-                        <FavoriteButton />
+                    <div className='ss-like-btn'>
+                        <LikeButton spotId={spotId} likeId={likeId} />
                     </div>
                 </div>
             </div>

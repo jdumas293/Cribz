@@ -36,6 +36,7 @@
     align-items: flex-end;
     width: 100%;
     /* border: 1px solid black; */
+
 }
 
 .spot-detail-image-container {
@@ -261,3 +262,11 @@
     font-size: 22px;
     font-weight: 600;
 }
+
+.ss-like-btn {
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+    /* border: 1px solid black; */
+}
+

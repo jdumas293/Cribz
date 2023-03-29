@@ -1,5 +1,5 @@
 const express = require('express');
-const { Spot, SpotImage, Review, User, ReviewImage, Booking } = require('../../db/models');
+const { Spot, SpotImage, Review, User, ReviewImage, Booking, Like } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -615,6 +615,48 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             statusCode: 403
         });
     };
+});
+
+
+// LIKES
+// CREATE A LIKE BY SPOT ID
+router.post('/:spotId/likes', requireAuth, async (req, res) => {
+    // const { userId, spotId } = req.body;
+    const spot = await Spot.findOne({
+        where: {
+            id: req.params.spotId
+        }
+    });
+
+    if (!spot) {
+        res.status(404);
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    };
+
+    const existingLike = await Like.findOne({
+        where: {
+            userId: req.user.id,
+            spotId: req.params.spotId
+        }
+    });
+
+    if (existingLike) {
+        res.status(403);
+        res.json({
+            message: "User has already liked this spot",
+            statusCode: 403
+        })
+    } else {
+        const like = await Like.create({
+            userId: req.user.id,
+            spotId: req.params.spotId
+        });
+
+        res.json(like);
+    }
 });
 
 

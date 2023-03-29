@@ -52,11 +52,11 @@
     color: red;
 }
 
-.profile-favorites-tab {
+.profile-likes-tab {
     cursor: pointer;
 }
 
-.profile-favorites-tab:hover {
+.profile-likes-tab:hover {
     cursor: pointer;
     color: red;
 }

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { thunkCreateBooking } from "../../store/bookings";
-import Calendar from "react-select-date";
 import './CreateBooking.css';
 
 const CreateBooking = () => {
@@ -29,21 +28,22 @@ const CreateBooking = () => {
         // console.log("NEW BOOKING ===>", newBooking);
 
         await dispatch(thunkCreateBooking(spot.id, newBooking))
-            .then(history.push(`/dashboard/${user.id}`))
-            .catch(
-                async(res) => {
-                    const data = await res.json();
-                    // console.log("DATA", data);
-                    if (data && data.errors) setErrors(data.errors);
-                    // console.log("ERRORS", errors);
-                }
-            )
+        .catch(
+            async(res) => {
+                const data = await res.json();
+                console.log("DATA ===>", data);
+                if (data && data.errors) setErrors(data.errors);
+                // console.log("ERRORS ===>", errors);
+            }
+        )
+        // .then(history.push(`/dashboard/${user.id}`))
     }
 
 
     return (
         <div>
             <form className="booking-form" onSubmit={handleSubmit}>
+                {/*   */}
                 {/* <div className="booking-form-errors">
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </div> */}

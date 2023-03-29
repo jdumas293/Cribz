@@ -33,8 +33,8 @@ function App() {
           <Route path='/bookings/:userId'>
             <UserDash tabOverride={"ShowCurrUserBookings"} />
           </Route>
-          <Route path='/favorites/:userId'>
-            <UserDash tabOverride={"FavoritesTab"} />
+          <Route path='/likes/:userId'>
+            <UserDash tabOverride={"LikesTab"} />
           </Route>
         </Switch>
       )}
