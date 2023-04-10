@@ -41,7 +41,6 @@ export const thunkGetCurrUserBookings = () => async (dispatch) => {
 
     if (response.ok) {
         const bookings = await response.json();
-        // console.log("BOOKINGS ===>", bookings)
         dispatch(getCurrUserBookings(bookings.Bookings));
         return bookings;
     };

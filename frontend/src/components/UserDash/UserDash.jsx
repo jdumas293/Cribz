@@ -11,8 +11,6 @@ const UserDash = ({ tabOverride }) => {
     const history = useHistory();
     const user = useSelector(state => state.session.user);
     const bookings = Object.values(useSelector(state => state.bookings.allBookings));
-    // console.log("USER", user);
-
     const [selectedTab, setSelectedTab] = useState(tabOverride ? tabOverride : 'ShowCurrUserBookings');
 
     const handleTabClick = (tabName) => {

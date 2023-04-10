@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { thunkGetSpotDetails } from '../../store/spots';
 import { thunkGetReviews } from '../../store/reviews';
+import { thunkGetLikes } from '../../store/likes';
 import OpenModalButton from '../OpenModalButton';
 import DeleteSpotModal from './DeleteSpotModal';
 import EditSpotModal from './EditSpotModal';
@@ -12,7 +13,6 @@ import CreateBooking from '../Bookings/CreateBooking';
 import LikeButton from '../Likes/LikeButton';
 import './SingleSpotPage.css';
 import '../Reviews/ReviewCard.css';
-import { thunkGetLikes } from '../../store/likes';
 
 
 export default function SpotDetails () {
@@ -29,7 +29,7 @@ export default function SpotDetails () {
         else return Number(num).toFixed(2);
     };
 
-    // function to only show the delete spot btn if you are the current owner of the spot
+    // Only show the delete spot btn if you are the current owner of the spot
     const showDeleteSpotBtn = () => {
         if (currUserId === spot.ownerId) {
             return <OpenModalButton
@@ -39,7 +39,7 @@ export default function SpotDetails () {
         }
     }
 
-    // function to only show the edit spot btn if you are the current owner of the spot
+    // Only show the edit spot btn if you are the current owner of the spot
     const showEditSpotBtn = () => {
         if (currUserId === spot.ownerId) {
             return <OpenModalButton
@@ -59,7 +59,7 @@ export default function SpotDetails () {
 
     useEffect(() => {
         dispatch(thunkGetLikes());
-    }, [dispatch])
+    }, [dispatch]);
 
     return (
         <>

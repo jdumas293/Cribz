@@ -18,8 +18,6 @@ export default function UpdateSpotModal ({ spot }) {
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
-    // console.log('price', price)
-
     const handleUpdate = async (e) => {
         e.preventDefault();
         setErrors([]);
@@ -41,7 +39,6 @@ export default function UpdateSpotModal ({ spot }) {
             .then(closeModal)
             .catch(
                 async(res) => {
-                    console.log('res', res);
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
                 }

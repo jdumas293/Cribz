@@ -7,7 +7,6 @@ import "./EditBooking.css";
 
 const EditBooking = ({ booking }) => {
     const dispatch = useDispatch();
-    // const history = useHistory();
     const { closeModal } = useModal();
     const [startDate, setStartDate] = useState(booking.startDate);
     const [endDate, setEndDate] = useState(booking.endDate);

@@ -15,7 +15,6 @@ const SearchFilter = () => {
 
     const onSearch = (searchTerm) => {
         setValue(searchTerm);
-        console.log("ST==>", searchTerm);
     };
 
     useEffect(() => {

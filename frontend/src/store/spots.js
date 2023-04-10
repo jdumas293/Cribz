@@ -58,7 +58,6 @@ export const thunkGetSpotDetails = (spotId) => async (dispatch) => {
 
     if (response.ok) {
         const spot = await response.json();
-        console.log('SPOT', spot);
         dispatch(getSpotDetails(spot));
         return spot;
     }
@@ -76,9 +75,6 @@ export const thunkCreateSpot = (spot, url, user) => async (dispatch) => {
     if (response.ok) {
         const newSpot = await response.json();
 
-        // console.log("SPOT", spot);
-        // console.log("URL", url);
-
         const formData = new FormData();
         formData.append("image", url);
         formData.append("preview", true)
@@ -94,7 +90,6 @@ export const thunkCreateSpot = (spot, url, user) => async (dispatch) => {
         if (imageRes.ok) {
             newSpot.Owner = user;
             newSpot.SpotImages = [{imageRes, preview: true}]
-            console.log(newSpot);
             dispatch(createSpot(newSpot));
             return newSpot;
         }
@@ -102,7 +97,6 @@ export const thunkCreateSpot = (spot, url, user) => async (dispatch) => {
 };
 
 export const thunkUpdateSpot = (spot) => async (dispatch) => {
-    // console.log('spot', spot);
     const response = await csrfFetch(`/api/spots/${spot.id}`, {
         method: 'PUT',
         headers: {

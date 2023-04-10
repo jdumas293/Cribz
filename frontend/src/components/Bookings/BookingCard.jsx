@@ -5,9 +5,6 @@ import DeleteBooking from "./DeleteBooking";
 import "./BookingCard.css";
 
 const BookingCard = ({ booking }) => {
-
-    // console.log("BOOKING", booking);
-
     return (
         <>
             <div className="profile-booking-container">

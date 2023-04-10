@@ -7,7 +7,6 @@ import './LikesTab.css';
 const LikesTab = () => {
     const dispatch = useDispatch();
     const likes = Object.values(useSelector(state => state.likes.allLikes));
-    // console.log("LIKES", likes);
 
     useEffect(() => {
         dispatch(thunkGetLikes(likes));

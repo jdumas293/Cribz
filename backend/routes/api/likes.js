@@ -35,7 +35,6 @@ router.get('/current', requireAuth, async (req, res) => {
 // DELETE A LIKE 
 router.delete('/:likeId', requireAuth, async (req, res) => {
     const like = await Like.findByPk(req.params.likeId);
-    console.log("LIKE DELETE", like);
 
     if (!like) {
         res.status(404);
