@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkEditBooking } from "../../store/bookings";
 import { thunkGetCurrUserBookings } from "../../store/bookings";
+import { yearMonthDay } from "../../store/utils";
 import "./EditBooking.css";
 
 const EditBooking = ({ booking }) => {
@@ -34,6 +35,11 @@ const EditBooking = ({ booking }) => {
             dispatch(thunkGetCurrUserBookings());
     };
 
+    useEffect(() => {
+        console.log("SD", startDate)
+        console.log("ED", endDate)
+    }, [])
+
     return (
         <div>
             <form className="edit-booking-form" onSubmit={handleEdit}>
@@ -45,7 +51,7 @@ const EditBooking = ({ booking }) => {
                         <input
                             type="date"
                             name="startDate"
-                            value={startDate}
+                            value={yearMonthDay(startDate)}
                             onChange={(e) => setStartDate(e.target.value)}
                         />
                     </div>
@@ -53,8 +59,8 @@ const EditBooking = ({ booking }) => {
                         <input
                             type="date"
                             name="endDate"
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
+                            value={yearMonthDay(endDate)}
+                            onChange={(e) => setEndDate(e.target.value) }
                         />
                     </div>
                     <button onSubmit={handleEdit}>Edit</button>
@@ -62,6 +68,7 @@ const EditBooking = ({ booking }) => {
             </form>
         </div>
     )
-}
+} 
+
 
 export default EditBooking;
